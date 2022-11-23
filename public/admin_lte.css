@@ -1,0 +1,31 @@
+:root {
+    --pink: #ffc7a8;
+}
+
+.sidebar-dark-primary {
+    background: black;
+}
+
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, 
+.sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+    background-color: var(--pink);
+    color: white; 
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: white;
+    background-color: black;
+    border-color: black;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: white;
+    background-color: black;
+    border: 1px solid #dee2e6;
+}

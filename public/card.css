@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+.card {
+  width: 250px;
+  height: 300px;
+  background: #bdbdbd;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: -10px 50px;
+  border-top: 4px solid var(--color);
+  border-bottom: 4px solid var(--color);
+  transform: skewY(15deg);
+  transition: 0.5s ease-in-out;
+}
+
+.card:hover::before {
+  inset: -10px 40px;
+  transform: skewY(0deg);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 60px -10px;
+  border-left: 4px solid var(--color);
+  border-right: 4px solid var(--color);
+  transform: skew(15deg);
+  transition: 0.5s ease-in-out;
+}
+
+.card:hover::after {
+  inset: 40px -10px;
+  transform: skew(0deg);
+}
+
+
+.card .content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  background: #2e2e2e;
+  gap: 20px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.card .content .icon {
+  color: var(--color);
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  background: #2e2e2e;
+  box-shadow: 0 0 0 4px #2e2e2e,
+    0 0 0 6px var(--color);
+  transition: 0.5s ease-in-out;
+}
+
+.card:hover .content .icon {
+  background: var(--color);
+  color: #2e2e2e;
+  box-shadow: 0 0 0 4px #2e2e2e,
+    0 0 0 300px var(--color);
+}
+
+.card .content .text h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition: 0.5s ease-in-out;
+}
+
+.card:hover .content .text h3 {
+  color: #2e2e2e;
+
+}
+
+
+.card .content .text p {
+  color: #999;
+  transition: 0.5s ease-in-out;
+}
+
+.card:hover .content .text p {
+  color: #2e2e2e;
+}
+
+.card .content .text a {
+  position: relative;
+  display: inline-block;
+  background: var(--color);
+  color: #2e2e2e;
+  text-decoration: none;
+  font-weight: 500;
+  margin-block-start: 10px;
+  padding: 8px 15px;
+}
+
+.card:hover .content .text a {
+  background: #2e2e2e;
+  color: var(--color);
+}
+
+
+
+
+.product-card{
+  background:#ffffff;
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.45);
+}
+
+.product-card .img-product{
+  position:relative;
+  margin:0px;
+  
+}
+.product-card .img-product img
+{ 
+  object-fit: cover;
+  width:100%;
+  position: center;
+
+}
+.product-card .img-product .imgarticulo-product{
+  height:200px;
+
+}
+.product-card .img-product .whishlist{
+  position:absolute;
+  bottom:20px;
+  right:20px;
+  background:#eb5ae5;
+  width:40px;
+  height:40px;
+  padding:8px;
+  border-radius:50%;
+  text-align: center;
+}
+.product-card .img-product .whishlist:hover{
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+.product-card .info-product{padding:0px 25px;}
+.product-card .info-product .title-product{
+    font-size:18px;
+    height: 50px;
+    font-weight:700;
+    color:#131313;
+}
+.product-card .info-product .description{
+    font-size:15px;
+    font-weight:400;
+    color:#414141;
+}
+.product-card .info-product .price{
+    background:#FFC069;
+    padding:8px 10px;
+    border-radius:30px;
+    font-weight:400;
+    font-size:14px;
+}
+.product-card .info-product .compraminima{
+  font-size:15px;
+  width:200px;
+  height:40px;
+  margin-bottom: 30px;
+  border-radius:10px;
+  background:#5b98eb;
+  color:#131313;
+}
+.btn-cart{
+  background:#131313;
+  color:#ffffff;
+  padding:10px 0px;
+  margin-top:30px;
+  text-decoration:none;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap:10px;
+}
+
+.registrar-card:hover,.product-card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+
+/*Cards registrar */
+a:link, a:visited, a:active {
+  text-decoration:none;
+}
+.registrar-card{
+  border-radius: 20px;
+}
+.card-content {
+  padding:15px;
+  text-align:left;
+}
+.card-title {
+  margin-top:0px;
+  font-weight: 700;
+  font-size: 1.65em;
+  color: #131313;
+}
+
+.card-subtitulo{
+  color: white;
+
+}
+
