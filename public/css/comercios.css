@@ -1,0 +1,84 @@
+.conteiner-search {
+    width: 100%;
+    min-height: 50vh;
+    padding: 5%;
+    background-image: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)), url('https://turismo.buenosaires.gob.ar/sites/turismo/files/mercado_san_telmo1500x610_0.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+    border-radius: 60px;
+
+}
+.conteiner-mapa {
+    width: 100%;
+    min-height: 50vh;
+    padding: 5%;
+    background-image: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)), url('https://i.blogs.es/635f55/maps/1366_2000.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+    border-radius: 60px;
+
+}
+
+.container-registrarcomercio{
+    width: 100%;
+    min-height: 50vh;
+    padding: 5%;
+    background-image: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)), url('https://blog.hubspot.es/hubfs/comercioelectronico.jpeg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+    border-radius: 60px;
+
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 700px;
+    position: absolute;
+    background: rgb(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 5px 20px;
+    backdrop-filter: blur(4px) satureate(100%);
+
+}
+
+.search-bar input {
+    
+    padding: 70px;
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 24px 20px;
+    font-size: 20px;
+    color: #cac7ff;
+
+}
+
+::placeholder {
+    color: #cac7ff;
+}
+
+
+
+.search-bar button {
+    border: 0;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background: #58629b;
+    cursor: pointer;
+}

@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('comercio_horario');
             $table->string('comercio_telefono');
             $table->string('estado');
-            $table->unsignedBigInteger('longitud');
-            $table->unsignedBigInteger('latitud');
+            $table->double('longitud');
+            $table->double('latitud');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
 

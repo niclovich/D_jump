@@ -151,7 +151,7 @@ class ArticulosController extends Controller
             $articulo->load('comercio');
             $idcategoria = $articulo->categoria_articulo->id;
             $articulosrelacioandos = Articulo::where('articulos.categoria_id', $idcategoria)->get();
-            return view('articulosshow', compact('articulo', 'articulosrelacioandos'));
+            return view('articulos.show', compact('articulo', 'articulosrelacioandos'));
         } else {
             $articulo->load('categoria_articulo');
             $articulo->load('comercio');
@@ -160,7 +160,15 @@ class ArticulosController extends Controller
             return view('panel.admin.articulos.show', compact('articulo', 'articulosrelacioandos'));
         }
     }
+    public function showinico(Articulo $articulo)
+    {
+        $articulo->load('categoria_articulo');
+        $articulo->load('comercio');
+        $idcategoria = $articulo->categoria_articulo->id;
+        $articulosrelacioandos = Articulo::where('articulos.categoria_id', $idcategoria)->get();
+        return view('articulos.show', compact('articulo', 'articulosrelacioandos'));
 
+    }
     /**
      * Show the form for editing the specified resource.
      *

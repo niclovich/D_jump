@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VentaController;
 use App\Models\CategoriaArticulo;
 use App\Models\Detallepedido;
+use App\Models\Venta;
 use Illuminate\Support\Facades\Route ;
 use JeroenNoten\LaravelAdminLte\View\Components\Tool\Datatable;
 
@@ -27,7 +28,6 @@ Route::resource('/users', UserController::class)->names('users');
 //->middleware('can:admin');
 
 
-Route::resource('/categorias', CategoriaArticuloController::class)->names('categorias');
 
 
 Route::get('armarpedido', [PedidoController::class, 'armarpedido'])->name('pedidos.armarpedido');
@@ -68,15 +68,10 @@ Route::resource('/articulos', ArticulosController::class)->names('articulos');
 
 Route::get('eliminar', [ComercioController::class, 'eliminar'])->name('eliminar');
 
+Route::get('/checkout', [VentaController::class, 'checkout'])->name('venta.checkout');
 
-//Route::resource('/comercios', ComercioController::class)->names('comercios');
 
-Route::get('/', [CartController::class, 'shop'])->name('shop');
-Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
-Route::post('/add', [CartController::class, 'add'])->name('cart.store');
-Route::post('/update', [CartController::class, 'update'])->name('cart.update');
-Route::post('/remove', [CartController::class, 'remove'])->name('cart.remove');
-Route::post('/clear', [CartController::class, 'clear'])->name('cart.clear');
+
 
 
 

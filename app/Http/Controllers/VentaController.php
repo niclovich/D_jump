@@ -21,7 +21,6 @@ class VentaController extends Controller
         $cartArticulos = CartFacade::getContent();
         $cartTotal = CartFacade::getTotal(); // the total with the conditions targeted to "total" applied
         //controlar stock
-
         DB::beginTransaction();
         try {
             $venta = Venta::create([
@@ -29,10 +28,11 @@ class VentaController extends Controller
                 'estado' => 'Empaquetando',
                 'total' => $cartTotal
             ]);
+
             $pedidosComercio = [];
             //obtengo los comercios para armar los pedidos
             foreach ($cartArticulos  as $articarrito) {
-                $comercio = $articarrito->attributes->comercio;
+                $comercio = $articarrito->attributes->comercioid;
                 if (!in_array($comercio, $pedidosComercio)) {
                     array_push($pedidosComercio, $comercio);
                 }
@@ -44,6 +44,7 @@ class VentaController extends Controller
                     'totalpedido' => 0,
                     'venta_id' => $venta->id
                 ]);
+
                 foreach ($cartArticulos  as $articarrito) {
                     $comercioArticulo = $articarrito->attributes->comercio;
                     if ($comercio == $comercioArticulo) {
@@ -227,4 +228,10 @@ class VentaController extends Controller
 
         return $pdf->download('Factura.pdf');
     }
+    public function checkout (){
+        $cartArticulos = CartFacade::getContent();
+        return view('checkout.checkout',compact('cartArticulos'));
+
+    }
+
 }

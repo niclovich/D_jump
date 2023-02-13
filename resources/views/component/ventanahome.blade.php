@@ -46,12 +46,12 @@
                                 <div class="card-footer" style="background-color: white;">
                                     <div class="row">
                                         <button class="btn btn-secondary btn-sm" class="tooltip-test"
-                                            title="add to cart">
+                                            title="add to cart" onclick="saveCoords()">
                                             <i class="fa fa-shopping-cart"></i> agregar al carrito
 
                                         </button>
                                         <a class="btn btn-secondary btn-sm "
-                                            href="{{ route('articulos.show', $articulo) }}">Ver</a>
+                                            href="{{ route('articulos.showinico', $articulo) }}">Ver</a>
 
                                     </div>
                                 </div>

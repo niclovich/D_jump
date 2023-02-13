@@ -80,7 +80,6 @@
             </div>
         </div>
         <hr>
-        @include('component.ventanahome')
     </div>
 @endsection
 @section('css')

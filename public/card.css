@@ -192,6 +192,7 @@
   background:#5b98eb;
   color:#131313;
 }
+
 .btn-cart{
   background:#131313;
   color:#ffffff;
@@ -233,3 +234,7 @@ a:link, a:visited, a:active {
 
 }
 
+.btn-add{
+    background-color:orange;
+    color:#fff;
+}

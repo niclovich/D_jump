@@ -4,7 +4,7 @@
     <h1>Detalle del pedido {{ $detallepedios[0]->pedido_id }}</h1>
 @stop
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/pedidos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estadoscolores.css') }}">
 
 
 @endsection

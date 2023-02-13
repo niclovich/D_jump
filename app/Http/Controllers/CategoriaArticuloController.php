@@ -46,15 +46,13 @@ class CategoriaArticuloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show( CategoriaArticulo $categoria)
+    public function show(CategoriaArticulo $categoria)
     {
         $user = Auth::user();
-        if($user->rol='cliente'){
-            $articulos= Articulo::where('estado','Validado')->where('categoria_id',$categoria->id)->get();
-            $categoria_nom=$categoria->categoria_nombre;
-            $categorias = CategoriaArticulo::get();
-            return view('panel.admin.articulos.listado',compact('categorias','articulos','categoria_nom'));
-        }
+        $articulos = Articulo::where('estado', 'Validado')->where('categoria_id', $categoria->id)->paginate(10);
+        $categoria_nom = $categoria->categoria_nombre;
+        $categorias = CategoriaArticulo::get();
+        return view('articulos.index', compact('categorias', 'articulos', 'categoria_nom'));
     }
 
     /**

@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Laravel\Scout\Searchable;
 class Comercio extends Model
 {
     use HasFactory;
+    use Searchable;
     protected $table='comercios';
 
     protected $fillable = [
@@ -29,5 +30,13 @@ class Comercio extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function toSearchableArray()
+    {
+        return [
+            'comercio_nom' => $this->comercio_nom,
+            'comercio_descripcion' => $this->comercio_descripcion,
+            'comercio_horario'=>$this->comercio_horario
+        ];
     }
 }

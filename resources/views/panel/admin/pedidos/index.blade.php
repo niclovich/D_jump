@@ -11,7 +11,7 @@
 @section('css')
 
 
-    <link rel="stylesheet" href="{{ asset('css/pedidos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estadoscolores.css') }}">
 
 @endsection
 @section('content')

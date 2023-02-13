@@ -1,17 +1,9 @@
-new Glider(document.querySelector('.glider'), {
-  slidesToShow: 1,
-  dots: '.dots',
-  draggable: true,
-  arrows: {
-    prev: '.glider-prev',
-    next: '.glider-next'
-  }
-});
+
 
 
 
 new Glider(document.querySelector('.gliderarticulos1'), {
-  slidesToShow: 4,
+  slidesToShow: 3,
   slidesToScroll: 4,
   draggable: true,
   dots: '.dots',
@@ -21,7 +13,7 @@ new Glider(document.querySelector('.gliderarticulos1'), {
   }
 });
 new Glider(document.querySelector('.gliderarticulos2'), {
-  slidesToShow: 4,
+  slidesToShow: 3,
   slidesToScroll: 4,
   draggable: true,
   dots: '.dots',
@@ -31,7 +23,7 @@ new Glider(document.querySelector('.gliderarticulos2'), {
   }
 });
 new Glider(document.querySelector('.gliderarticulos3'), {
-  slidesToShow: 4,
+  slidesToShow: 3,
   slidesToScroll: 4,
   draggable: true,
   dots: '.dots',

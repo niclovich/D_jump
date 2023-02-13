@@ -18,7 +18,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use HasRoles;//roles
+    use HasRoles; //roles
 
     /**
      * The attributes that are mass assignable.
@@ -65,5 +65,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comercio::class);
     }
+    public function adminlte_image()
+    {
+        return 'https://picsum.photos/300/300';
+    }
+    public function adminlte_profile_url()
+    {
+        return 'profile/username';
+    }
+    
+    public function adminlte_desc()
+    {
+        return 'That\'s a nice guy';
+    }
 }
-

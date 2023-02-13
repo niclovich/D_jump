@@ -23,7 +23,7 @@
     @yield('adminlte_css_pre')
 
     {{-- Base Stylesheets --}}
-    @if(!config('adminlte.enabled_laravel_mix'))
+    @if (!config('adminlte.enabled_laravel_mix'))
         <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
@@ -32,16 +32,58 @@
 
         <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
 
-        @if(config('adminlte.google_fonts.allowed', true))
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        @if (config('adminlte.google_fonts.allowed', true))
+            <link rel="stylesheet"
+                href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         @endif
     @else
         <link rel="stylesheet" href="{{ mix(config('adminlte.laravel_mix_css_path', 'css/app.css')) }}">
     @endif
+    <style>
+        .lineahome {
+            background-color: #bd931f;
+            color: #bd931f
+        }
+
+        .footer-clean {
+            padding: 50px 0;
+            background-color: #d3d3d3;
+            color: #4b4c4d;
+        }
+
+        .footer-clean h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .footer-clean ul {
+            padding: 0;
+            list-style: none;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .footer-clean ul a {
+            color: inherit;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        .footer-clean ul a:hover {
+            opacity: 1;
+        }
+
+        .footer-clean .item.social {
+            text-align: right;
+        }
+    </style>
 
     {{-- Livewire Styles --}}
-    @if(config('adminlte.livewire'))
-        @if(app()->version() >= 7)
+    @if (config('adminlte.livewire'))
+        @if (app()->version() >= 7)
             @livewireStyles
         @else
             <livewire:styles />
@@ -52,7 +94,7 @@
     @yield('adminlte_css')
 
     {{-- Favicon --}}
-    @if(config('adminlte.use_ico_only'))
+    @if (config('adminlte.use_ico_only'))
         <link rel="shortcut icon" href="{{ asset('favicons/favicon.ico') }}" />
     @elseif(config('adminlte.use_full_favicon'))
         <link rel="shortcut icon" href="{{ asset('favicons/favicon.ico') }}" />
@@ -68,7 +110,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicons/favicon-16x16.png') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicons/favicon-32x32.png') }}">
         <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicons/favicon-96x96.png') }}">
-        <link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('favicons/android-icon-192x192.png') }}">
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicons/android-icon-192x192.png') }}">
         <link rel="manifest" crossorigin="use-credentials" href="{{ asset('favicons/manifest.json') }}">
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
@@ -77,12 +119,25 @@
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
+    @if (Request::route()->getName() === 'login'  )
+        <header>
+            @include('component.navbar')
+
+        </header>
+    @endif
+    @if (Request::route()->getName() === 'register'  )
+    <header>
+        @include('component.navbar')
+
+    </header>
+@endif
 
     {{-- Body Content --}}
     @yield('body')
 
+
     {{-- Base Scripts --}}
-    @if(!config('adminlte.enabled_laravel_mix'))
+    @if (!config('adminlte.enabled_laravel_mix'))
         <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
@@ -96,8 +151,8 @@
     @endif
 
     {{-- Livewire Script --}}
-    @if(config('adminlte.livewire'))
-        @if(app()->version() >= 7)
+    @if (config('adminlte.livewire'))
+        @if (app()->version() >= 7)
             @livewireScripts
         @else
             <livewire:scripts />
@@ -106,6 +161,7 @@
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
+    @include('component.fotter')
 
 </body>
 

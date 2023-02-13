@@ -23,8 +23,8 @@ class ComercioSeeder extends Seeder
             'comercio_horario'=> '08:00-14:00',
             'comercio_telefono'=>  '3874199824',
             'estado'=> 'validado',
-            'longitud'=> 15478,
-            'latitud'=>54548
+            'longitud'=>-65.414107,
+            'latitud'=> -24.79333
 
         ]);
         Comercio::create([
@@ -35,8 +35,8 @@ class ComercioSeeder extends Seeder
             'comercio_horario'=> '08:00-14:00',
             'comercio_telefono'=>  '3874199824',
             'estado'=> 'validado',
-            'longitud'=> 15478,
-            'latitud'=>54548
+            'longitud'=>-65.415363,
+            'latitud'=>-24.793113
         ]);
         Comercio::create([
             'user_id' => 4,
@@ -46,8 +46,8 @@ class ComercioSeeder extends Seeder
             'comercio_horario'=> '08:00-14:00',
             'comercio_telefono'=>  '3874199824',
             'estado'=> 'validado',
-            'longitud'=> 15478,
-            'latitud'=>54548
+            'longitud'=> -65.413952,
+            'latitud'=>-24.792207
         ]);
         Comercio::create([
             'user_id' => 5,
@@ -57,8 +57,8 @@ class ComercioSeeder extends Seeder
             'comercio_horario'=> '08:00-14:00',
             'comercio_telefono'=>  '3874199824',
             'estado'=> 'validado',
-            'longitud'=> 15478,
-            'latitud'=>54548
+            'longitud'=>-65.414188,
+            'latitud'=>-24.792158
         ]);
 
         /*Comercio::create([

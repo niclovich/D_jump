@@ -162,4 +162,18 @@ class ComercioController extends Controller
 
         return $pdf->download('Comercios.pdf');
     }
+    public function comercioindex()
+    {
+        $comercios = Comercio::where('estado', 'Validando')->orWhere('estado', 'Validado')->get();
+        $comercios->load('user');
+        return view('comercios.index', compact('comercios'));
+             
+    }
+    public function comerciodata()
+    {
+        $comercios = Comercio::where('estado', 'Validando')->orWhere('estado', 'Validado')->get();
+        $comercios->load('user');
+        return response()->json(['success' => true, 'comercios' => $comercios], 200);
+    }
+    
 }

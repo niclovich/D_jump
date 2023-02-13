@@ -6,13 +6,14 @@ use App\Models\Articulo;
 use Darryldecode\Cart\Facades\CartFacade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class CartController extends Controller
 {
 
     public function cart()  {
         $cartCollection = CartFacade::getContent();
-        return view('panel.admin.articulos.cart',compact('cartCollection'));
+        return view('articulos.cart',compact('cartCollection'));
     }
     public function remove(Request $request){
         CartFacade::remove($request->id);
@@ -20,6 +21,7 @@ class CartController extends Controller
     }
  
     public function add(Request $request){
+        /*
         $user=Auth::user()->rol;
         if($user=='cliente'){
             CartFacade::add(array(
@@ -39,7 +41,23 @@ class CartController extends Controller
         }
         else{
             return redirect()->route('/');
-        }
+        }*/
+        $cartCollection = CartFacade::getContent();
+        CartFacade::add(array(
+            'id' => $request->id,
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'attributes' => array(
+                'image' => $request->img,
+                'comercionombre'=> $request->comercionombre,
+                'comercioid'=> $request->comercioid,
+                'pricemayor'=> $request->pricemayor,
+                'pricemenor'=> $request->pricemenor,
+                'cantidadminima'=> $request->cantidadminima
+            )
+        ));
+        return redirect()->route($request->page)->with('success_msg', 'Item Agregado a sú Carrito!');
     }
 
     public function update(Request $request){

@@ -20,9 +20,10 @@
     font-size:14px;
 }
 .estadonaranaja{
-    background:#F6723B;
+    background:#fca61c;
     padding:8px 10px;
     border-radius:30px;
     font-weight:400;
     font-size:14px;
+    width: 150px ;
 }

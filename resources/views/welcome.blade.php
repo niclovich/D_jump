@@ -1,79 +1,143 @@
 @extends('layouts.plantilla')
 @section('contenido')
-    <div class="container-sm">
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="glider-contain">
-                    <div class="glider">
-                        <div class="card-image">
-                            <img class="img-glider" src="imagen/image1Edit.jpg" alt="Slider Image">
-                        </div>
-                        <div class="card-image">
-                            <img class="img-glider" src="imagen/image2Edit.jpg" alt="Slider Image">
-                        </div>
-                        <div class="card-image">
-                            <img class="img-glider" src="imagen/image3Edit.jpg" alt="Slider Image">
-                        </div>
-
-                    </div>
-                    <button aria-label="Previous" class="glider-prev">«</button>
-                    <button aria-label="Next" class="glider-next">»</button>
-                    <div role="tablist" class="dots"></div>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container-one";>
+                    <form class="search-bar" method="GET" action="{{ route('articulos.search') }}">
+                        <input class="buscar_text" value="{{ old('product_search') }}"  name="search" type="search" placeholder="Buscar Articulos"
+                            aria-label="Search">
+                            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></i></button>
+                        </form>
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Busca</h5>
                 </div>
             </div>
+            <div class="carousel-item">
+                <div class="container-second">
 
-            <div class=" offset-sm-1 col-sm-3 ">
-                <div class="row">
-                    <div class="registrar-card" style="background-color: #eb5ae5">
-                        <a href="{{ route('register') }}">
-                            <div class="card-content">
-                                <h4 class="card-title">
-                                    Registro de usuarios
-                                </h4>
-                                <p class="card-subtitulo">
-                                    Quieres comprar , articulos en mayor o menor.Registrate facil y rapido
-                                </p>
-                            </div>
-                        </a>
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Registra tu comercio</h5>
+                    <p>Registrate y inpulsa tus venta</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <a href="">
+                    <div class="container-third">
+
 
                     </div>
-                </div>
-                <br>
-
-                <div class="row">
-                    <div class="registrar-card" style="background-color: #5b98eb">
-                        <a href="{{ route('register') }}">
-                            <div class="card-content">
-                                <h4 class="card-title">
-                                    Registor de comercio
-                                </h4>
-                                <p class="card-subtitulo">
-                                    ¿Estas buscando publicitar tu comercio ? Registrate
-                                </p>
-                            </div>
-                        </a>
-
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Comercios ceracanos </h5>
+                        <p>Conoce tus alrededor</p>
                     </div>
+                </a>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div class="container">
+        <hr class="lineahome">
+        <h1>Destacado</h1>
+        <hr class="lineahome">
+
+
+        <div class="row">
+            @for ($i = 0; $i < 6; $i++)
+                <input type="hidden" value="{{ $articulo = $articulos[$i] }}">
+                <div class="col-sm-4">
+                    @include('component.cart-articulo')
+                    <br>
                 </div>
+            @endfor
+        </div>
+        <div id="div-vermas" class="row" style="display: none">
+            @for ($j = 6; $j < 18; $j++)
+                <input type="hidden" value="{{ $articulo = $articulos[$j] }}">
+                <div class="col-sm-4">
+                    @include('component.cart-articulo')
+                    <br>
+                </div>
+            @endfor
+        </div>
+        <div id="button-vermas"class="row align-items-center ">
+            <div class="col text-center">
+                <a class="btn btn-success btn-lg w-50" onclick="vermas();ocultarvermas();">> ver mas </a>
 
             </div>
 
         </div>
-        @include('component.ventanahome')
-
+        <hr class="lineahome">
     </div>
 @endsection
 
 @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
-    <script src="glider.js"></script>
     @yield('js')
-
 @endsection
 @section('css')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
-    <link rel="stylesheet" href="glider.css">
     <link rel="stylesheet" href="{{ asset('card.css') }}">
-    @yield('cs')
+    <link rel="stylesheet" href="{{ asset('css/welcomecarrusel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/comercios.css') }}">
 
+    @yield('cs')
+    <style>
+        .container-one {
+            width: 100%;
+            min-height: 50vh;
+            padding: 5%;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 70px;
+            border-radius: 60px;
+            background-image: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)), url('https://abarrotero.com/wp-content/uploads/2018/09/mayoreo_ventas_abarrotero.png');
+
+        }
+
+        .container-second {
+            width: 100%;
+            min-height: 50vh;
+            padding: 5%;
+            background-image: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)), url('https://turismo.buenosaires.gob.ar/sites/turismo/files/mercado_san_telmo1500x610_0.jpg');
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 50px;
+            border-radius: 60px;
+
+        }
+
+        .container-third {
+            width: 100%;
+            min-height: 50vh;
+            padding: 5%;
+            background: url('imagen/inicio3.png');
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 50px;
+            border-radius: 60px;
+
+        }
+    </style>
 @endsection
