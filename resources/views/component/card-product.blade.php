@@ -4,7 +4,7 @@
         padding: 5px;  height : 150px;width: 150px">
     </div>
     <div class="col-md-6 mt-1">
-        @if ($n < 3)
+        @if ($n < 3  and  $val==1 )
             <div class="mt-1 mb-1 spec-1">
                 <p class="estadonaranaja">Mas Vendido</p>
             </div>

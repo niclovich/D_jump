@@ -64,7 +64,7 @@ return [
     */
 
     'logo' => '<b>D</b>JUMP',
-    'logo_img' => 'vendor/adminlte/dist/img/icon.png',//cambiar logo
+    'logo_img' => 'vendor/adminlte/dist/img/icon.png', //cambiar logo
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xl',
@@ -302,13 +302,13 @@ return [
             'route' => 'ventas.index',
             'icon' => 'fas  fa-shopping-cart', // icono de fontawesome
             'can' => 'allpedidos' // permiso de admin
-        ],       
+        ],
         [
             'text' => 'Lista de Comercios',
             'route' => 'comercios.index',
             'icon' => 'fas fa-store', // icono de fontawesome
             'can' => 'allcomercios' // permiso de admin
-        ],        
+        ],
         [
             'text' => 'Lista de Articulos',
             'route' => 'articulos.index',
@@ -317,24 +317,22 @@ return [
         ],
         //Comercios
         [
+            'header' => 'Perfil Comercio',
+            'can' => 'comerciopedidos'
+        ],
+        [
             'text' => 'Mis Articulos',
             'route' => 'articulos.index',
             'icon' => 'fas fa-shopping-basket', // icono de fontawesome
             'can' => 'comercioarticulos' // permiso de admin
-        ],    
+        ],
         [
             'text' => 'Mis Pedidos',
             'route' => 'ventas.index',
             'icon' => 'fas  fa-shopping-cart', // icono de fontawesome
             'can' => 'comerciopedidos' // permiso de admin
         ],
-        //Cliente
-        [
-            'text' => 'Mis compras',
-            'route' => 'ventas.index',
-            'icon' => 'fas  fa-shopping-cart', // icono de fontawesome
-            'can' => 'clientepedidos' 
-        ],   
+
         //nav bar                                             
         [
             'type'         => 'navbar-search',
@@ -347,11 +345,11 @@ return [
         ],
         [
             'text' => 'Home',
-            'url'=>'panel/home',
+            'url' => 'panel/home',
             'topnav' => true,
 
         ],
-         /*
+        /*
         [
             'text' => 'Articulos',
             'route'=>'articulos.index',
@@ -375,7 +373,24 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        ['header' => 'Configuracion de Perfil'],
+
+        [
+            'header' => 'Perfil Usuario',
+            'can' => 'comerciopedidos'
+        ],
+        [
+            'text' => 'Mis compras',
+            'route' => 'compras.venedor',
+            'icon' => 'fas  fa-shopping-cart', // icono de fontawesome
+            'can' => ['clientepedidos','miscomprasvendedor']
+        ],
+ 
+
+
+        [
+            'header' => 'Configuracion de Perfil',
+        ],
+
         /*[
             'text' => 'Registrar Comercio',
             'route' => 'comercios.create',
@@ -480,7 +495,7 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

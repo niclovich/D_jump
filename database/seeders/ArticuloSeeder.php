@@ -251,7 +251,106 @@ class ArticuloSeeder extends Seeder{
             'precioxmenor'=>398.30,
             'cantidadminima'=>6
         ]);
+        Articulo::create([
+            'articulo_nom'=>'LECHE COSALTA DESCREMADA X 1LT ',
+            'image_url'=>'https://fiambreriasofi.com.ar/wp-content/uploads/2021/05/cosalta-ltda-SS307502-400x350-1.jpg',
+            'articulo_descripcion'=>'LECHE COSALTA DESCREMADA X 1LT',
+            'stock'=> 99,
+            'estado'=> 'Validado',
+            'comercio_id'=>4,
+            'categoria_id'=>11,
+            'precioxmayor'=>120,
+            'precioxmenor'=>170,
+            'cantidadminima'=>6
+        ]);
+        Articulo::create([
+            'articulo_nom'=>'LECHE COSALTA ENTERA X 1LT',
+            'image_url'=>'https://fiambreriasofi.com.ar/wp-content/uploads/2021/05/leche-entera-larga-vida-cosalta-x-1-lt1-001572b0f7be08e51e15906116685723-640-0-1.jpg',
+            'articulo_descripcion'=>'LECHE COSALTA ENTERA X 1LT',
+            'stock'=> 99,
+            'estado'=> 'Validado',
+            'comercio_id'=>4,
+            'categoria_id'=>11,
+            'precioxmayor'=>120,
+            'precioxmenor'=>171,
+            'cantidadminima'=>6
+        ]);
+        Articulo::create([
+            'articulo_nom'=>'YOGURT MOMY BEBIBLE X 1LT',
+            'image_url'=>'https://fiambreriasofi.com.ar/wp-content/uploads/2021/08/unnamed-1.jpg',
+            'articulo_descripcion'=>'YOGURT MOMY BEBIBLE X 1LT',
+            'stock'=> 99,
+            'estado'=> 'Validado',
+            'comercio_id'=>4,
+            'categoria_id'=>11,
+            'precioxmayor'=>172,
+            'precioxmenor'=>198,
+            'cantidadminima'=>6
+        ]);
+        Articulo::create([
+            'articulo_nom'=>'YOGURT DESCREMADO MOMY X 1LT',
+            'image_url'=>'https://fiambreriasofi.com.ar/wp-content/uploads/2021/08/unnamed-3.jpg',
+            'articulo_descripcion'=>'YOGURT DESCREMADO MOMY X 1LT',
+            'stock'=> 99,
+            'estado'=> 'Validado',
+            'comercio_id'=>4,
+            'categoria_id'=>11,
+            'precioxmayor'=>180,
+            'precioxmenor'=>209,
+            'cantidadminima'=>6
+        ]);
+        Articulo::create([
+            'articulo_nom'=>'Galletitas Oreo 117grs',
+            'image_url'=>'https://www.distribuidorapop.com.ar/wp-content/uploads/2019/05/galletitas-oreo-venta-ml.jpg',
+            'articulo_descripcion'=>'Galletitas Oreo 117grs',
+            'stock'=> 99,
+            'estado'=> 'Validado',
+            'comercio_id'=>4,
+            'categoria_id'=>12,
+            'precioxmayor'=>250,
+            'precioxmenor'=>280,
+            'cantidadminima'=>12
+        ]);
+        Articulo::create([
+            'articulo_nom'=>'Bizcochos salados Jorgito x 200gr.',
+            'image_url'=>'https://www.distribuidorapop.com.ar/wp-content/uploads/2016/08/bizcochos-salados-jorgito-venta.jpg',
+            'articulo_descripcion'=>'Bizcochitos de grasa,Salados,Cada paquete trae 200gr,La caja trae 24 paquetes',
+            'stock'=> 99,
+            'estado'=> 'Validado',
+            'comercio_id'=>4,
+            'categoria_id'=>12,
+            'precioxmayor'=>120,
+            'precioxmenor'=>131,
+            'cantidadminima'=>24
+        ]);
+        Articulo::create([
+            'articulo_nom'=>'Galletitas Opera 55grs',
+            'image_url'=>'https://www.distribuidorapop.com.ar/wp-content/uploads/2019/05/galletitas-opera-venta-ml.jpg',
+            'articulo_descripcion'=>'Obleas Rellenas de crema sabor naranja Paquete x 55gr. La caja contiene 24 paquetes',
+            'stock'=> 99,
+            'estado'=> 'Validado',
+            'comercio_id'=>4,
+            'categoria_id'=>12,
+            'precioxmayor'=>100,
+            'precioxmenor'=>136,
+            'cantidadminima'=>24
+        ]);
+        Articulo::create([
+            'articulo_nom'=>'Galletitas Cachafaz integral avena con chips 225gr.',
+            'image_url'=>'https://www.distribuidorapop.com.ar/wp-content/uploads/2019/05/galletitas-opera-venta-ml.jpg',
+            'articulo_descripcion'=>'Galletitas Integrales Azucar Mascabo El paquete trae 225gr. La caja trae 21 paquetes',
+            'stock'=> 99,
+            'estado'=> 'Validado',
+            'comercio_id'=>4,
+            'categoria_id'=>12,
+            'precioxmayor'=>350,
+            'precioxmenor'=>391,
+            'cantidadminima'=>21
+        ]);
+
+
     }
+    
 
 }
 

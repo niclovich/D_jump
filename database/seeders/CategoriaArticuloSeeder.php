@@ -67,5 +67,15 @@ class CategoriaArticuloSeeder extends Seeder
             'categoria_descripcion'=>'Articulos de libreria y mercerias ',
             'image_url'=> 'https://http2.mlstatic.com/D_NQ_NP657477-MLA43230937556_082020-B.jpg'
         ]);    
+        CategoriaArticulo::create([
+            'categoria_nombre'=>'Lacteos',
+            'categoria_descripcion'=>'Articulos Lacteos',
+            'image_url'=> 'https://cdn-icons-png.flaticon.com/512/6170/6170624.png'
+        ]);
+        CategoriaArticulo::create([
+            'categoria_nombre'=>'Kiosco',
+            'categoria_descripcion'=>'Galletas,Snack,Chocolates',
+            'image_url'=> 'https://cdn-icons-png.flaticon.com/512/6170/6170624.png'
+        ]);
     }
 }

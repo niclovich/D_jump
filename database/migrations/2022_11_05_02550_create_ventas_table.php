@@ -17,9 +17,16 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->text('estado');
+            $table->text('firstName');
+            $table->text('lastName');
+            $table->text('address');
+            $table->text('address2');
+            $table->text('country');
+            $table->text('state');
             $table->double('total');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 

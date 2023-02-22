@@ -33,6 +33,8 @@ class RolSeeder extends Seeder
         Permission::create(['name' => 'comercioarticulos'])->assignRole($rol_vendedor);
         Permission::create(['name' => 'mi_comercio'])->assignRole($rol_vendedor);
 
+        Permission::create(['name' => 'miscomprasvendedor'])->assignRole($rol_vendedor);
+
         //cliente
 
         

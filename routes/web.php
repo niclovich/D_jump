@@ -6,7 +6,9 @@ use App\Http\Controllers\CategoriaArticuloController;
 use App\Http\Controllers\ComercioController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\VentaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,8 +28,10 @@ Route::get('/articulos', [HomeController::class, 'articulos'])->name('articulosi
 
 Route::resource('/', HomeController::class)->names('/');
 
+Route::put('/comerciodata{id}', [ComercioController::class, 'comercioshow'])->name('comercioshow');
 
 Route::get('/comercios/all', [ComercioController::class, 'comercioindex'])->name('comercioall');
+Route::get('/comercios/{comercio}', [ComercioController::class, 'show2'])->name('comercios.show2');
 
 Route::middleware([
     'auth:sanctum',
@@ -59,3 +63,11 @@ Route::get('/comerciosindex', [ComercioController::class, 'comerciodata'])->name
 
 
 Route::resource('/categorias', CategoriaArticuloController::class)->names('categorias');
+
+
+//pagos
+
+Route::get('/checkout', [VentaController::class, 'checkout'])->name('venta.checkout');
+Route::post('/paypal', [PaymentController::class, 'payWithpaypal'])->name('paypal');
+Route::get('/status', [PaymentController::class, 'getPaymentStatus'])->name('status');
+Route::post('/ventavalida', [VentaController::class, 'armarventa']);

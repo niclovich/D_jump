@@ -10,11 +10,11 @@
     </div>
     <div class="align-items-center align-content-center col-md-3 border-left mt-1">
         <div class="d-flex flex-row align-items-center">
-            <h6 class="mr-1">Cant Articulos   </h6><span class="strike-text">     53</span>
+            <h6 class="mr-1">Cant Articulos   </h6><span class="strike-text">     {{$comercio->articulos}}</span>
         </div>
-        <h6 class="text-success">Ventas realizadas 56</h6>
+        <h6 class="text-success">Ventas realizadas {{$comercio->ventas}}</h6>
         <div class="d-flex flex-column mt-5">
-            <button class="btn btn-primary btn-sm" type="button">Ver mas</button>
+            <a href="{{route('comercios.show2',$comercio)}}" class="btn btn-primary btn-sm" type="button">Ver mas</a>
         </div>
     </div>
 </div>

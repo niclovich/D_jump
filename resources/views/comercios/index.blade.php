@@ -20,15 +20,17 @@
                     <h5>Busca</h5>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="container-registrarcomercio">
+            <a href="{{ route('comercios.create') }}">
+                <div class="carousel-item">
+                    <div class="container-registrarcomercio">
 
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Registra tu comercio</h5>
+                        <p>Registrate y inpulsa tus venta</p>
+                    </div>
                 </div>
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Registra tu comercio</h5>
-                    <p>Registrate y inpulsa tus venta</p>
-                </div>
-            </div>
+            </a>
             <div class="carousel-item">
                 <a href="">
                     <div class="conteiner-mapa">
@@ -51,6 +53,7 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    <hr>
     <div class="container">
         @if (count($comercios) == 0)
             <br>
@@ -78,7 +81,11 @@
                 @include('component.card-shop')
             @endforeach
         @endif
-        <p id="variable"> da</p>
+        @if ($comercios->count())
+            <div class="card-footer">
+                {{ $comercios->links() }}
+            </div>
+        @endif
         <div id="map">
 
         </div>
@@ -94,14 +101,14 @@
 
     <script>
         /*
-                                                                                                        Documentación:
+                                                                                                                Documentación:
 
-                                                                                                        https://leafletjs.com/examples/quick-start/
+                                                                                                                https://leafletjs.com/examples/quick-start/
 
-                                                                                                        https://github.com/Leaflet/Leaflet.markercluster#usage
+                                                                                                                https://github.com/Leaflet/Leaflet.markercluster#usage
 
-                                                                                                    
-                                                                                                    */
+                                                                                                            
+                                                                                                            */
 
 
         const defaultPoint = [-24.7892, -65.4106];
@@ -153,12 +160,14 @@
                 iconAnchor: [20, 58], // changed marker icon position
                 popupAnchor: [0, -60], // changed popup position
             });
-            console.log(comercio.image_url)
-            var customPopup =
-                '<div  style="width: "300px; height: "300px"><div class="thumb-wrapper"><div class="img-box"><img src="' +
-                comercio.image_url + '" class="img-fluid" alt=""></div><div class="thumb-content"><h6>' + comercio
-                .comercio_nom + '</h6><p><b>' + comercio.comercio_descripcion +
-                '</b></p><a href="#" class="btn btn-primary">Ver</a></div></div></div>';
+            var id = "1";
+            var ruta = "route('comercios.show2'," + id + ")";
+            var customPopup = '<div class="card-popup" > <a href="/comercios/' + comercio.id +
+                '"><div class="row"> <img src="' + comercio.image_url +
+                '" class="rounded-circle mx-auto mt-2 " style="width: 50px; height: 50px"> </div></a>  <div class="row"> <h6 class="mx-auto">' +
+                comercio.comercio_nom + '</h6> </div> </div>'
+            console.log(customPopup);
+
             // specify popup options
             const customOptions = {
                 width: "300px", // set max-width

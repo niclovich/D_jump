@@ -15,7 +15,7 @@ use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 class PedidoController extends Controller
 
 {
-    
+
     public function armarpedido()
     {
         $user = Auth::user();
@@ -98,29 +98,22 @@ class PedidoController extends Controller
      */
     public function show(Pedido $pedido)
     {
-        $user = Auth::user();
-        if ($user->rol == 'cliente') {
-            $detallepedios = Detallepedido::join('articulos', 'detallepedidos.articulo_id', 'articulos.id')
-                ->where('detallepedidos.pedido_id', $pedido->id)
-                ->get();
-            return view('panel.admin.detallepedido.index', compact('detallepedios'));
-        } else {
-            if ($user->rol == 'vendedor') {
-                $comercio = Comercio::where('user_id', $user->id)->first();
-                $detallepedios = Detallepedido::join('articulos', 'detallepedidos.articulo_id', 'articulos.id')
-                    ->where('articulos.comercio_id', $comercio->id)
-                    ->where('detallepedidos.pedido_id', $pedido->id)
-                    ->get();
-                return view('panel.admin.detallepedido.index', compact('detallepedios'));
-            }
-            else{
-                $pedido->load('detallepedidos');
-                $detallepedios=$pedido->detallepedidos;
-                $detallepedios->load('articulo'); 
-                return view('panel.admin.detallepedido.index', compact('detallepedios'));
-            }
-        }
+        $detallepedios = Detallepedido::join('articulos', 'detallepedidos.articulo_id', 'articulos.id')
+        ->where('detallepedidos.pedido_id', $pedido->id)
+        ->get();
+        return view('panel.admin.detallepedido.index', compact('detallepedios'));
+
     }
+
+    public function show2(Pedido $compra)
+    {
+        $detallepedios = Detallepedido::join('articulos', 'detallepedidos.articulo_id', 'articulos.id')
+        ->where('detallepedidos.pedido_id', $compra->id)
+        ->get();
+        return view('panel.admin.detallepedido.index', compact('detallepedios'));
+
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -141,16 +134,14 @@ class PedidoController extends Controller
      */
     public function update(Request $request, Pedido $pedido)
     {
-        $pedido->estado=$request->get('estado');
+        $pedido->estado = $request->get('estado');
         $pedido->save();
         $user = Auth::user();
         if ($user->rol == 'vendedor') {
-            return redirect()->route('ventas.index')->with('success', 'Actualizado'.$pedido->id);
+            return redirect()->route('ventas.index')->with('success', 'Actualizado' . $pedido->id);
+        } else {
+            return redirect()->route('pedidos.index')->with('success', 'Actualizado' . $pedido->id);
         }
-        else{
-            return redirect()->route('pedidos.index')->with('success', 'Actualizado'.$pedido->id);
-        }
-
     }
 
     /**
@@ -163,5 +154,4 @@ class PedidoController extends Controller
     {
         //
     }
-
 }

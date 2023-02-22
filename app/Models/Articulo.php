@@ -38,9 +38,10 @@ class Articulo extends Model
     public function toSearchableArray()
     {
         return [
-            'id' => (int) $this->id,
             'articulo_nom' => $this->articulo_nom,
             'articulo_descripcion' => $this->articulo_descripcion,
+            'comercios.comercio_nom'=> '',
+            'categoria_articulos.categoria_nombre'=>'',
         ];
     }
 }

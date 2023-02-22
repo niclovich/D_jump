@@ -49,6 +49,7 @@
                         <td colspan="5" class="text-center">No Data Found</td>
                     </tr>
                 @endif
+            </table>
         </div>
     </div>
     <div id="addEmployeeModal" class="modal fade">
@@ -111,6 +112,9 @@
         </div>
     </div>
 
+
+
+@endsection
 @section('js')
     <script src="{{ asset('tabla.js') }}"></script>
 
@@ -130,7 +134,5 @@
         });
     </script>
 
-
-@endsection
 
 @endsection

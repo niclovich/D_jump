@@ -10,10 +10,10 @@
             <div class="carousel-item active">
                 <div class="container-one";>
                     <form class="search-bar" method="GET" action="{{ route('articulos.search') }}">
-                        <input class="buscar_text" value="{{ old('product_search') }}"  name="search" type="search" placeholder="Buscar Articulos"
-                            aria-label="Search">
-                            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></i></button>
-                        </form>
+                        <input class="buscar_text" value="{{ old('product_search') }}" name="search" type="search"
+                            placeholder="Buscar Articulos" aria-label="Search">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></i></button>
+                    </form>
                 </div>
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Busca</h5>
@@ -23,10 +23,13 @@
                 <div class="container-second">
 
                 </div>
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Registra tu comercio</h5>
-                    <p>Registrate y inpulsa tus venta</p>
-                </div>
+                <a href="{{ route('register') }}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Registrate</h5>
+                        <p>Compra por mayor </p>
+                    </div>
+                </a>
+
             </div>
             <div class="carousel-item">
                 <a href="">
@@ -35,8 +38,7 @@
 
                     </div>
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Comercios ceracanos </h5>
-                        <p>Conoce tus alrededor</p>
+                        <h5>Todos los Metodos de pago</h5>
                     </div>
                 </a>
             </div>
@@ -51,47 +53,83 @@
         </a>
     </div>
     <div class="container">
-        <hr class="lineahome">
-        <h1>Destacado</h1>
-        <hr class="lineahome">
+        <div class="panel-categoria " style="display: flex;align-items: center;justify-content: center;">
+            <hr style="width: 30%">
+            <h1>CATEGORÍAS</h1>
+            <hr style="width: 30%">
+            @include('component.glidercategorias')
 
-
-        <div class="row">
-            @for ($i = 0; $i < 6; $i++)
-                <input type="hidden" value="{{ $articulo = $articulos[$i] }}">
-                <div class="col-sm-4">
-                    @include('component.cart-articulo')
-                    <br>
-                </div>
-            @endfor
         </div>
-        <div id="div-vermas" class="row" style="display: none">
-            @for ($j = 6; $j < 18; $j++)
-                <input type="hidden" value="{{ $articulo = $articulos[$j] }}">
-                <div class="col-sm-4">
-                    @include('component.cart-articulo')
-                    <br>
-                </div>
-            @endfor
-        </div>
-        <div id="button-vermas"class="row align-items-center ">
-            <div class="col text-center">
-                <a class="btn btn-success btn-lg w-50" onclick="vermas();ocultarvermas();">> ver mas </a>
-
+        <hr class="lineahome">
+        <div class="panel-articulos">
+            <div class="panel-categoria " style="display: flex;align-items: center;justify-content: center;">
+                <hr style="width: 30%">
+                <h1>DESTACADOS</h1>
+                <hr style="width: 30%">
             </div>
+            @if (count($articulos) >= 6)
+                <div class="row">
+                    @for ($i = 0; $i < 6; $i++)
+                        <input type="hidden" value="{{ $articulo = $articulos[$i] }}">
+                        <div class="col-sm-4">
+                            @include('component.cart-articulo')
+                            <br>
+                        </div>
+                    @endfor
+                </div>
+                <div id="div-vermas" class="row" style="display: none">
+                    @for ($j = 6; $j < count($articulos); $j++)
+                        <input type="hidden" value="{{ $articulo = $articulos[$j] }}">
+                        <div class="col-sm-4">
+                            @include('component.cart-articulo')
+                            <br>
+                        </div>
+                    @endfor
+                </div>
+                <div id="button-vermas"class="row align-items-center ">
+                    <div class="col text-center">
+                        <a class="btn btn-success btn-lg w-50" onclick="vermas();ocultarvermas();">ver mas </a>
+                    </div>
+
+                </div>
+            @else
+                <div class="row">
+                    @for ($i = 1; $i < count($articulos); $i++)
+                        <input type="hidden" value="{{ $articulo = $articulos[$i] }}">
+                        <div class="col-sm-4">
+                            @include('component.cart-articulo')
+                            <br>
+                        </div>
+                    @endfor
+                </div>
+            @endif
 
         </div>
+
         <hr class="lineahome">
     </div>
 @endsection
 
 @section('js')
     @yield('js')
+    <script>
+        new Glider(document.querySelector('.glider'), {
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            draggable: true,
+            dots: '.dots',
+            arrows: {
+                prev: '.glider-prev',
+                next: '.glider-next'
+            }
+        });
+    </script>
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ asset('card.css') }}">
     <link rel="stylesheet" href="{{ asset('css/welcomecarrusel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/comercios.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/categoria.css') }}">
 
     @yield('cs')
     <style>

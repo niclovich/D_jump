@@ -28,71 +28,70 @@
             </div>
         @endforeach
     @endif
-    <div class="container-sm">
-        <div class="primer row"> 
-            <div class="col-sm">
-                <a href="{{ route('ventas.index') }}">
-                    <div class="card" style="--color: #F6F22F">
-                        <div class="content">
-                            <div class="icon">
-                                <i class="fas  fa-shopping-cart"></i>
-                            </div>
-                            <div class="text">
-                                <h3>Mis compras </h3>
-                                <p> Compras del mes </p>
-                                <p>{{$ventas}}</p>
-                            </div>
-                        </div>
+    <div class="container">
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3></h3>
+
+                        <p>Ventas</p>
                     </div>
-                </a>
-            </div>
-            <div class="col-sm">
-                <a href="{{route('users.edit',$user)}}">
-                    <div class="card" style="--color: #eb5ae5">
-                        <div class="content">
-                            <div class="icon">
-                                <i class="fas fa-cog"></i>
-                            </div>
-                            <div class="text">
-                                <h3>Mi perfil</h3>
-                                <p>Setting</p>
-                                <br>
-                            </div>
-                        </div>
+                    <div class="icon">
+                        <i class="fas fa-cart-arrow-down"></i>
                     </div>
-                </a>
+                    <a href="{{ route('ventas.index') }}" class="small-box-footer">Mas info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
             </div>
-            <div class="col-sm">
-                <a href="{{route('comercios.create')}}">
-                    <div class="card" style="--color: #5b98eb">
-                        <div class="content">
-                            <div class="icon">
-                                <i class="fas fa-cog"></i>
-                            </div>
-                            <div class="text">
-                                <h3>Quiero vender</h3 >
-                                <p>¿Quieres vender ? Sube y crea tu propio Comercio</p>
-                                <br>
-                            </div>
-                        </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3></h3>
+
+                        <p>Articulos Cargados</p>
                     </div>
-                </a>
+                    <div class="icon">
+                        <i class="fas fa-shopping-basket"></i>
+                    </div>
+                    <a href="{{ route('articulos.index') }}" class="small-box-footer">Mas info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
             </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3></h3>
+
+                        <p>Usuarios Registrados</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <a href="{{ route('users.index') }}" class="small-box-footer">Mas info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            </div>
+            <!-- ./col -->
         </div>
-        <hr>
     </div>
 @endsection
 @section('css')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
-    <link rel="stylesheet" href="{{ asset('pedidos.css') }}">
-    <link rel="stylesheet" href="{{ asset('card.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
 
 
 @stop
 
 @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
-    <script src="{{ asset('glidercliente.js') }}"></script>
+
 
 @stop

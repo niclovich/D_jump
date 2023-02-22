@@ -19,11 +19,11 @@ class PanelHomeController extends Controller
     {    
         $user = Auth::user();
         if($user->rol=='admin'){
-            $user =User::count();
-            $comercio =Comercio::count();
+            $users =User::count();
+            $comercios =Comercio::count();
             $venta =Venta::count();
             $producto =Articulo::count();
-            return view('panel.roleshome.homeadmin',compact('user','comercio','venta','producto'));
+            return view('panel.roleshome.homeadmin',compact('users','comercios','venta','producto'));
         }
         else {
             if(($user->rol=='vendedor')){

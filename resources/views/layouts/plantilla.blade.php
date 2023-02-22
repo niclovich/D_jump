@@ -121,7 +121,7 @@
     <title>DJUMP</title>
 </head>
 
-<body onload="posicionate()">
+<body onload="posicionate()" style="background:#EFEDF4">
     <header>
         @include('component.navbar')
 

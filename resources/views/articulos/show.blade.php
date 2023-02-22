@@ -47,13 +47,15 @@
                         </div>
                         <input type="hidden" value="{{ $articulo->id }}" id="id" name="id">
                         <input type="hidden" value="{{ $articulo->articulo_nom }}" id="name" name="name">
-                        <input type="hidden" value="{{ $articulo->comercio_id }}" id="comercio" name="comercio">
+                        <input type="hidden" value="{{ $articulo->comercio->comercio_nom }}" id="comercionombre" name="comercionombre">
+                
+                        <input type="hidden" value="{{ $articulo->comercio->id }}" id="comercioid" name="comercioid">
                         <input type="hidden" value="{{ $articulo->precioxmayor }}" id="pricemayor" name="pricemayor">
                         <input type="hidden" value="{{ $articulo->precioxmenor }}" id="pricemenor" name="pricemenor">
                         <input type="hidden" value="{{ $articulo->precioxmenor }}" id="price" name="price">
-                        <input type="hidden" value="{{ $articulo->cantidadminima }}" id="cantidadminima"
-                            name="cantidadminima">
+                        <input type="hidden" value="{{ $articulo->cantidadminima }}" id="cantidadminima" name="cantidadminima">
                         <input type="hidden" value="{{ $articulo->image_url }}" id="img" name="img">
+                        <input type="hidden" value="1" id="quantity" name="quantity">
                         <input type="hidden" value="cart.index" id="page" name="page">
 
                         <div class="row card-footer  justify-content-center" >

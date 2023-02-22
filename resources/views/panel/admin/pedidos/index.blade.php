@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-@section('title', 'Inicio')
 @section('content_header')
     @role ('vendedor')
         <h1>Ultimos pedidos</h1>

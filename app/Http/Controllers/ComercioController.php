@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Exports\ComerciosExport;
 use App\Models\Articulo;
 use App\Models\Comercio;
+use App\Models\Venta;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DataTables;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,9 @@ class ComercioController extends Controller
     public function create()
     {
         $user = Auth::user();
+        if($user->rol=='vendedor'){
+            
+        }
         return view('panel.admin.comercios.create', compact('user'));
     }
 
@@ -67,23 +71,21 @@ class ComercioController extends Controller
             $user->save();
             Comercio::create([
                 'user_id' => $request->get("user_id"),
-                'comercio_nom'=>$request->get("comercio_nom"),
-                'image_url'=> 'https://imagenes.elpais.com/resizer/A_R_QBvWXTG8G3EzIaaw2gOZe8M=/1960x0/cloudfront-eu-central-1.images.arcpublishing.com/prisa/FGVRU4ALGVUKRIOJEPLT4TCPZA.jpg',
+                'comercio_nom' => $request->get("comercio_nom"),
+                'image_url' => 'https://imagenes.elpais.com/resizer/A_R_QBvWXTG8G3EzIaaw2gOZe8M=/1960x0/cloudfront-eu-central-1.images.arcpublishing.com/prisa/FGVRU4ALGVUKRIOJEPLT4TCPZA.jpg',
                 'comercio_descripcion' => $request->get('comercio_descripcion'),
-                'comercio_horario'=> $request->get('comercio_horario'),
-                'comercio_telefono'=>  $request->get('comercio_telefono'),
-                'estado'=> 'validado',
-                'longitud'=> 15478,
-                'latitud'=>54548
-            ]);            
+                'comercio_horario' => $request->get('comercio_horario'),
+                'comercio_telefono' =>  $request->get('comercio_telefono'),
+                'estado' => 'validado',
+                'longitud' => 15478,
+                'latitud' => 54548
+            ]);
             DB::commit();
             return redirect()->route('/home.index');
-
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('/home.index');
         }
-
     }
 
 
@@ -92,6 +94,22 @@ class ComercioController extends Controller
         $comercio->load('user');
         return view('panel.admin.comercios.show', compact('comercio'));
     }
+
+    public function show2(Comercio $comercio)
+    {
+        $comercio->load('user');
+        $articulos = Articulo::Where('comercio_id', $comercio->id)->get();
+        $cantventas = Venta::selectRaw("count(*) as Total")
+            ->join('pedidos', 'ventas.id', 'pedidos.venta_id')
+            ->where('pedidos.comercio_id', $comercio->id)->get();
+        $cantventas = $cantventas[0]->Total;
+        //calcular fechas//
+        $fechaActual = Carbon::now();
+        $fechacreacion = $comercio->created_at;
+        $diasregistrados = $fechacreacion->diffInDays($fechaActual);
+        return view('comercios.show', compact('comercio', 'articulos', 'cantventas','diasregistrados'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -125,13 +143,10 @@ class ComercioController extends Controller
 
         //$comercio->fill($request->post())->update();
         $user = Auth::user();
-        if($user->rol=='vendedor'){
+        if ($user->rol == 'vendedor') {
             return redirect()->route('/home.index')->with('success_msg', 'Comercio   updated successfully');
-
-        }
-        else
-        {
-        return redirect()->route('comercios.index')->with('success_msg', 'Comercio   updated successfully');
+        } else {
+            return redirect()->route('comercios.index')->with('success_msg', 'Comercio   updated successfully');
         }
     }
     public function destroy(Request $request)
@@ -164,10 +179,12 @@ class ComercioController extends Controller
     }
     public function comercioindex()
     {
-        $comercios = Comercio::where('estado', 'Validando')->orWhere('estado', 'Validado')->get();
+        $comercios = Comercio::selectRaw('comercios.*, (SELECT COUNT(*) from articulos where articulos.comercio_id=comercios.id) as articulos,(SELECT COUNT(*)   FROM ventas inner join pedidos on pedidos.venta_id=ventas.id WHERE pedidos.comercio_id=comercios.id) as ventas ')
+        ->where('estado', 'Validado')
+        ->orderby('articulos','desc')
+        ->paginate(15);
         $comercios->load('user');
         return view('comercios.index', compact('comercios'));
-             
     }
     public function comerciodata()
     {
@@ -175,5 +192,13 @@ class ComercioController extends Controller
         $comercios->load('user');
         return response()->json(['success' => true, 'comercios' => $comercios], 200);
     }
-    
+
+    public function comercioshow(Request $request,$id){
+
+        $comercios = Comercio::where('estado', 'Validando')->orWhere('estado', 'Validado')
+        ->where('id',$id)
+        ->get();
+        $comercios->load('user');
+        return response()->json(['success' => true, 'comercios' => $comercios], 200);
+    }
 }

@@ -39,9 +39,9 @@
                 <div class="col-sm-3 col-md-3 item social">
                     <h3>Redes Sociales</h3>
 
-                    <a href="#"><i class="icon ion-social-facebook"><img src="imagen/instagram.png"></i></a>
-                    <a href="#"><i class="icon ion-social-twitter"><img src="imagen/facebook.png"> </i></a>
-                    <a href="#"><i class="icon ion-social-snapchat"><img src="imagen/youtube.png"></i></a>
+                    <a href="#"><i class="icon ion-social-facebook"><img src="/imagen/instagram.png"></i></a>
+                    <a href="#"><i class="icon ion-social-twitter"><img src="/imagen/facebook.png"> </i></a>
+                    <a href="#"><i class="icon ion-social-snapchat"><img src="/imagen/youtube.png"></i></a>
                     <p class="copyright">Company Name © 2022</p>
                 </div>
             </div>

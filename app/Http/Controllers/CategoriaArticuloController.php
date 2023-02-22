@@ -49,9 +49,32 @@ class CategoriaArticuloController extends Controller
     public function show(CategoriaArticulo $categoria)
     {
         $user = Auth::user();
-        $articulos = Articulo::where('estado', 'Validado')->where('categoria_id', $categoria->id)->paginate(10);
-        $categoria_nom = $categoria->categoria_nombre;
-        $categorias = CategoriaArticulo::get();
+        if (is_null($user)) {
+            $articulos = Articulo::where('estado', 'Validado')->where('categoria_id', $categoria->id)->paginate(10);
+            $categoria_nom = $categoria->categoria_nombre;
+            $categorias = CategoriaArticulo::get();
+        }
+        else{
+            if($user->rol=="vendedor"){
+                $articulos= Articulo::join('comercios','articulos.comercio_id','=','comercios.id')
+                ->where('articulos.estado','Validado')
+                ->where('categoria_id', $categoria->id)
+                ->where('comercios.user_id','!=',$user->id)
+                ->paginate(10);
+                $categoria_nom = $categoria->categoria_nombre;
+                $categorias = CategoriaArticulo::get();
+            }
+            else{
+                $articulos = Articulo::where('estado', 'Validado')->where('categoria_id', $categoria->id)->paginate(10);
+                $categoria_nom = $categoria->categoria_nombre;
+                $categorias = CategoriaArticulo::get();
+
+            }
+
+
+
+        }
+
         return view('articulos.index', compact('categorias', 'articulos', 'categoria_nom'));
     }
 
