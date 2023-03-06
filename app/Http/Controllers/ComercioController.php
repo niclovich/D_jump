@@ -186,7 +186,7 @@ class ComercioController extends Controller
         $comercios = Comercio::selectRaw('comercios.*, (SELECT COUNT(*) from articulos where articulos.comercio_id=comercios.id) as articulos,(SELECT COUNT(*)   FROM ventas inner join pedidos on pedidos.venta_id=ventas.id WHERE pedidos.comercio_id=comercios.id) as ventas ')
         ->where('estado', 'Validado')
         ->orderby('articulos','desc')
-        ->paginate(15);
+        ->paginate(10);
         $comercios->load('user');
         return view('comercios.index', compact('comercios'));
     }

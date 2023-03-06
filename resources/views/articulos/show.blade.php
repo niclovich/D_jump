@@ -61,7 +61,7 @@
                                 <input type="hidden" value="1" id="quantity" name="quantity">
                                 <input type="hidden" value="cart.index" id="page" name="page">
                                 Saber mas sobre el vendedor <a style="color: black"
-                                    href="">{{ $articulo->comercio->comercio_nom }}
+                                    href="{{route('comercios.show2',$articulo->comercio_id)}}">{{ $articulo->comercio->comercio_nom }}
                                 </a>
                                 <div class="row card-footer  justify-content-center">
                                     <button class="btn btn-success" id="agregarbutton" title="add to cart">

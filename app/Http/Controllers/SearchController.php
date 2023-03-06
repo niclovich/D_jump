@@ -14,7 +14,7 @@ class SearchController extends Controller
     {
         $user = Auth::user();
         if ($request->has('search')) {
-            $val="1";
+            $val = "1";
             if (is_null($user)) {
                 $articulos = Articulo::search($request->search)
                     ->query(function ($query) {
@@ -54,51 +54,49 @@ class SearchController extends Controller
                         ->paginate(10);
                 }
             }
-        }
-        else{
-            $val="0";
+        } else {
+            $val = "0";
             if (is_null($user)) {
                 $articulos = Articulo::query(function ($query) {
-                        $user = Auth::user();
-                        $query->join('comercios', 'articulos.comercio_id', '=', 'comercios.id')
-                            ->join('categoria_articulos', 'categoria_articulos.id', 'articulos.categoria_id')
-                            ->select('articulos.*', 'comercios.user_id')
-                            ->where('articulos.estado', 'Validado');
-                    })
+                    $user = Auth::user();
+                    $query->join('comercios', 'articulos.comercio_id', '=', 'comercios.id')
+                        ->join('categoria_articulos', 'categoria_articulos.id', 'articulos.categoria_id')
+                        ->select('articulos.*', 'comercios.user_id')
+                        ->where('articulos.estado', 'Validado');
+                })
                     ->orderBy('precioxmayor')
                     ->paginate(10);
             } else {
                 if ($user->rol == "vendedor") {
                     $articulos = Articulo::query(function ($query) {
-                            $user = Auth::user();
-                            $query->join('comercios', 'articulos.comercio_id', '=', 'comercios.id')
-                                ->join('categoria_articulos', 'categoria_articulos.id', 'articulos.categoria_id')
+                        $user = Auth::user();
+                        $query->join('comercios', 'articulos.comercio_id', '=', 'comercios.id')
+                            ->join('categoria_articulos', 'categoria_articulos.id', 'articulos.categoria_id')
 
-                                ->select('articulos.*', 'comercios.user_id')
-                                ->where('comercios.user_id', '!=', $user->id)
-                                ->where('articulos.estado', 'Validado');
-                        })
+                            ->select('articulos.*', 'comercios.user_id')
+                            ->where('comercios.user_id', '!=', $user->id)
+                            ->where('articulos.estado', 'Validado');
+                    })
                         ->orderBy('precioxmayor')
                         ->paginate(10);
                 } else {
                     $articulos = Articulo::query(function ($query) {
-                            $user = Auth::user();
-                            $query->join('comercios', 'articulos.comercio_id', '=', 'comercios.id')
-                                ->join('categoria_articulos', 'categoria_articulos.id', 'articulos.categoria_id')
+                        $user = Auth::user();
+                        $query->join('comercios', 'articulos.comercio_id', '=', 'comercios.id')
+                            ->join('categoria_articulos', 'categoria_articulos.id', 'articulos.categoria_id')
 
-                                ->select('articulos.*', 'comercios.user_id')
-                                ->where('articulos.estado', 'Validado');
-                        })
+                            ->select('articulos.*', 'comercios.user_id')
+                            ->where('articulos.estado', 'Validado');
+                    })
                         ->orderBy('precioxmayor')
 
                         ->paginate(10);
                 }
             }
-
         }
         $categorias = CategoriaArticulo::get();
-    
-        return view('articulos.index', compact('categorias', 'articulos','val'));
+
+        return view('articulos.index', compact('categorias', 'articulos', 'val'));
     }
 
     public function comerciosautocomplete(Request $request)
@@ -113,7 +111,15 @@ class SearchController extends Controller
     public function searchcomercio(Request $request)
     {
         if ($request->has('search')) {
-            $comercios = Comercio::search($request->search)->paginate(10);
+            
+            $comercios = Comercio::search($request->search)
+            ->query(function ($query) {
+                $query->selectRaw('comercios.*, (SELECT COUNT(*) from articulos where articulos.comercio_id=comercios.id) as articulos,(SELECT COUNT(*)   FROM ventas inner join pedidos on pedidos.venta_id=ventas.id WHERE pedidos.comercio_id=comercios.id) as ventas ')
+                ->where('estado', 'Validado')
+                ->orderby('articulos','desc');
+            })->paginate(10);
+            return view('comercios.index', compact('comercios'));
+            
         } else {
             $comercios = Comercio::paginate(10);
         }
