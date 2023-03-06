@@ -20,17 +20,19 @@
                     <h5>Busca</h5>
                 </div>
             </div>
-            <a href="{{ route('comercios.create') }}">
-                <div class="carousel-item">
-                    <div class="container-registrarcomercio">
 
-                    </div>
+            <div class="carousel-item">
+                <div class="container-registrarcomercio">
+
+                </div>
+                <a href="{{ route('comercios.create') }}">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Registra tu comercio</h5>
                         <p>Registrate y inpulsa tus venta</p>
                     </div>
-                </div>
-            </a>
+                </a>
+
+            </div>
             <div class="carousel-item">
                 <a href="">
                     <div class="conteiner-mapa">
@@ -53,8 +55,17 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    <hr>
+    <div class="row">
+      
+        @include('component.panel-indicaciones')
+
+
+    </div>
+
     <div class="container">
+        <div class="titulo">
+            <h1>COMERCIOS DISPONIBLES</h1>
+        </div>
         @if (count($comercios) == 0)
             <br>
             <br>
@@ -86,7 +97,10 @@
                 {{ $comercios->links() }}
             </div>
         @endif
-        <div id="map">
+        <div class="titulo">
+            <h1>MAPA</h1>
+        </div>
+        <div id="map" style="height: 350px;" >
 
         </div>
     </div>
@@ -101,14 +115,14 @@
 
     <script>
         /*
-                                                                                                                Documentación:
+                                                                                                                    Documentación:
 
-                                                                                                                https://leafletjs.com/examples/quick-start/
+                                                                                                                    https://leafletjs.com/examples/quick-start/
 
-                                                                                                                https://github.com/Leaflet/Leaflet.markercluster#usage
+                                                                                                                    https://github.com/Leaflet/Leaflet.markercluster#usage
 
-                                                                                                            
-                                                                                                            */
+                                                                                                                
+                                                                                                                */
 
 
         const defaultPoint = [-24.7892, -65.4106];
@@ -210,6 +224,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
     <link rel="stylesheet" href="{{ asset('css/comercios.css') }}">
+    <link rel="stylesheet" href="{{ asset('card.css') }}">
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.1.0/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.1.0/dist/MarkerCluster.Default.css" />
 @endsection

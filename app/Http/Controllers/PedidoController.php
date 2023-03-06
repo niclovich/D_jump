@@ -6,6 +6,7 @@ use App\Models\Articulo;
 use App\Models\Comercio;
 use App\Models\Detallepedido;
 use App\Models\Pedido;
+use App\Models\Venta;
 use Darryldecode\Cart\Facades\CartFacade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -134,13 +135,30 @@ class PedidoController extends Controller
      */
     public function update(Request $request, Pedido $pedido)
     {
-        $pedido->estado = $request->get('estado');
-        $pedido->save();
         $user = Auth::user();
+        $estado=$request->get('estado');
+        if($estado=="Listo"){
+            $pedido->estado = $estado;
+            $pedido->save();
+            //vemos si todos los pedidos estan en listo
+            $pedidoslistos=Pedido::where('venta_id',$pedido->venta_id)->where('estado','Listo')->get();
+            $pedidos=Pedido::where('venta_id',$pedido->venta_id)->get();
+            if(count($pedidos)==count($pedidoslistos)){
+                $venta=Venta::where('id',$pedido->venta_id)->first();
+                $venta->estado="En Camino";
+                $venta->save();
+            }
+
+        }
+        else{
+
+        }
+
         if ($user->rol == 'vendedor') {
-            return redirect()->route('ventas.index')->with('success', 'Actualizado' . $pedido->id);
+            return redirect()->route('ventas.index')->with('success', 'Venta Actualizado ' . $pedido->id);
+
         } else {
-            return redirect()->route('pedidos.index')->with('success', 'Actualizado' . $pedido->id);
+            return redirect()->route('pedidos.index')->with('success', 'Pedido Actualizado  ' . $pedido->id);
         }
     }
 

@@ -17,7 +17,7 @@
         @endif
     </div>
 
-
+<br>
     <div class="container">
         <main>
 
@@ -73,9 +73,10 @@
                         </div>
                     </div>
                     <hr class="my-4">
-                    <h4 class="mb-3">Dirección de Envio</h4>
                     <div id="container-pagos">
                         <div id="container-tarjeta">
+                            <h4 class="mb-3">Dirección de Envio</h4>
+
                             <form class="card p-2 my-4 shadow " method="post" action="{{ url('/ventavalida') }}">
                                 {{ csrf_field() }}
 
@@ -195,7 +196,7 @@
                                 </div>
 
                                 <hr class="my-4">
-                                <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                                <button class="w-100 btn btn-success btn-lg" type="submit">Confirmar Compra</button>
                             </form>
                         </div>
                         <div id="container-paypal" style="display: none">
@@ -205,13 +206,13 @@
 
                                 
                                 
-                                <h4 class="mb-3 bg-fondo text-white text-center py-2">Pago con Paypal</h4>
+                                <h4 class="mb-3 bg-fondo text-center py-2">Pago con Paypal</h4>
 
                                 <div class="form-group">
                                     <input type="text" style="display: none" name="amount"
                                         value="{{ \Cart::getTotal() }}">
                                 </div>
-                                <button class="btn btn-primary btn-lg btn-block mt-3" type="submit">Pagar con
+                                <button class="btn btn-success btn-lg btn-block mt-3" type="submit">Pagar con
                                     PayPal</button>
                             </form>
                         </div>

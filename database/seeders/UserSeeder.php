@@ -130,8 +130,55 @@ class UserSeeder extends Seeder
             'rol' => 'cliente',
             'created_at'=>'2023-02-20 20:01:20'
         ])->assignRole('cliente');
+        User::create([
+            'name' => 'Nicolas',
+            'email'=> 'niicomatiasrv@gmail.com',
+            'password'=> hash::make('12345'),
+            'rol' => 'cliente',
+            'created_at'=>'2023-02-20 20:01:20'
+        ])->assignRole('cliente');
+        User::create([
+            'name'=> 'vendedor19',
+            'email'=> 'vendedor19@gmail.com',
+            'password' => Hash::make('12345'),
+            'rol' => 'vendedor',
 
-
-
+        ])->assignRole('vendedor');
+        User::create([
+            'name'=> 'vendedor20',
+            'email'=> 'vendedor20@gmail.com',
+            'password' => Hash::make('12345'),
+            'rol' => 'vendedor',
+        ])->assignRole('vendedor');
+        User::create([
+            'name'=> 'vendedor21',
+            'email'=> 'vendedor21@gmail.com',
+            'password' => Hash::make('12345'),
+            'rol' => 'vendedor',
+        ])->assignRole('vendedor');
+        User::create([
+            'name'=> 'vendedor22',
+            'email'=> 'vendedor22@gmail.com',
+            'password' => Hash::make('12345'),
+            'rol' => 'vendedor',
+        ])->assignRole('vendedor');
+        User::create([
+            'name'=> 'vendedor23',
+            'email'=> 'vendedor23@gmail.com',
+            'password' => Hash::make('12345'),
+            'rol' => 'vendedor',
+        ])->assignRole('vendedor');
+        User::create([
+            'name'=> 'vendedor24',
+            'email'=> 'vendedor24@gmail.com',
+            'password' => Hash::make('12345'),
+            'rol' => 'vendedor',
+        ])->assignRole('vendedor');
+        User::create([
+            'name'=> 'vendedor25',
+            'email'=> 'vendedor25@gmail.com',
+            'password' => Hash::make('12345'),
+            'rol' => 'vendedor',
+        ])->assignRole('vendedor');
     }
 }

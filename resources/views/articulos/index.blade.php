@@ -25,20 +25,8 @@
         @else
             <div class="row justify-content-end">
                 <div class="col-6 ">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
-                            data-toggle="dropdown" aria-expanded="false">
-                            {{ $articulos[0]->categoria_articulo->categoria_nombre }}
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            @foreach ($categorias as $categoria)
-                                @if ($categoria->categoria_nombre != $articulos[0]->categoria_articulo->categoria_nombre)
-                                    <li><button class="dropdown-item" type="button">{{ $categoria->categoria_nombre }}
-                                        </button></li>
-                                @endif
-                            @endforeach
-
-                        </ul>
+                    <div class=>
+                        
                     </div>
                 </div>
                 <div class="col-3 align-self-end">

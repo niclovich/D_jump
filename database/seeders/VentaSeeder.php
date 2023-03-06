@@ -16,7 +16,7 @@ class VentaSeeder extends Seeder
     public function run()
     {
         Venta::create([
-            'user_id'=>2,
+            'user_id'=>18,
             'estado'=>'Empaquetando',    //
             'total'=>5454
         ]);

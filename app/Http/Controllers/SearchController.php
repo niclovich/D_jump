@@ -13,8 +13,6 @@ class SearchController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-
-
         if ($request->has('search')) {
             $val="1";
             if (is_null($user)) {
@@ -26,6 +24,7 @@ class SearchController extends Controller
                             ->select('articulos.*', 'comercios.user_id')
                             ->where('articulos.estado', 'Validado');
                     })
+                    ->orderBy('precioxmayor')
                     ->paginate(10);
             } else {
                 if ($user->rol == "vendedor") {
@@ -39,6 +38,7 @@ class SearchController extends Controller
                                 ->where('comercios.user_id', '!=', $user->id)
                                 ->where('articulos.estado', 'Validado');
                         })
+                        ->orderBy('precioxmayor')
                         ->paginate(10);
                 } else {
                     $articulos = Articulo::search($request->search)
@@ -50,6 +50,7 @@ class SearchController extends Controller
                                 ->select('articulos.*', 'comercios.user_id')
                                 ->where('articulos.estado', 'Validado');
                         })
+                        ->orderBy('precioxmayor')
                         ->paginate(10);
                 }
             }
@@ -64,6 +65,7 @@ class SearchController extends Controller
                             ->select('articulos.*', 'comercios.user_id')
                             ->where('articulos.estado', 'Validado');
                     })
+                    ->orderBy('precioxmayor')
                     ->paginate(10);
             } else {
                 if ($user->rol == "vendedor") {
@@ -76,6 +78,7 @@ class SearchController extends Controller
                                 ->where('comercios.user_id', '!=', $user->id)
                                 ->where('articulos.estado', 'Validado');
                         })
+                        ->orderBy('precioxmayor')
                         ->paginate(10);
                 } else {
                     $articulos = Articulo::query(function ($query) {
@@ -86,6 +89,8 @@ class SearchController extends Controller
                                 ->select('articulos.*', 'comercios.user_id')
                                 ->where('articulos.estado', 'Validado');
                         })
+                        ->orderBy('precioxmayor')
+
                         ->paginate(10);
                 }
             }

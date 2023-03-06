@@ -1,11 +1,47 @@
 @extends('adminlte::page')
 @section('title', 'Inicio')
 @section('content_header')
-    @role('vendedor')
-        <h1>Listado articulos de {{ $articulos[0]->comercio->comercio_nom }}</h1>
-    @else
-        <h1>Listado articulos</h1>
-    @endrole
+        <div class="container-fuild">
+            <div class="row text-center">
+                <div class=" col-6">
+                    <div class="info-box mb-3 bg-warning">
+                        <span class="info-box-icon"><i class="fas fa-tag"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Inventory</span>
+                            <span class="info-box-number">{{$inventario}}</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                </div>
+                <div class=" card col-6">
+                    <div class="row ">
+                        @role('vendedor')
+                        <div class="col">
+                            Agregar Articulo <br>
+                            <a class="btn btn-success" href="{{ route('articulos.create') }}"><i class="fa fa-plus"></i></a>
+                        </div>
+                        @endrole
+                        <div class="col">
+                            Descargar pdf <br>
+                            <a href="{{ route('articulos.generate-pdf') }}"
+                                class="btn btn-danger text-white text-uppercase me-1"><i class="fa fa-file-pdf-o"
+                                    aria-hidden="true"></i>
+
+                            </a>
+                        </div>
+                        <div class="col">
+                            Generar Exel <br>
+                            <a href="{{ route('articulos.export') }}" class="btn  btn-warning text-white text-uppercase me-1">
+                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 @stop
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/estadoscolores.css') }}">
@@ -40,22 +76,7 @@
                 </div>
             @endforeach
         @endif
-        <div class="row">
-            <div class="col-md-12 col-md-offset-1">
-                @role('vendedor')
-                <a class="btn btn-success" href="{{ route('articulos.create') }}"><i
-                            class="fa fa-plus">Articulo</i></a>
-                @endrole
-                <a href="{{ route('articulos.generate-pdf') }}"
-                    class="btn btn-sm btn-danger text-white text-uppercase me-1">
-                    Generar Pdf 
-                </a>
-                <a href="{{ route('articulos.export') }}" class="btn btn-sm btn-warning text-white text-uppercase me-1">
-                    Generar Exel 
-                </a>
 
-            </div>
-        </div>
         @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 {{ $message }}
@@ -63,9 +84,9 @@
         @endif
         <div class='row'>
             <div class="col-md-12 col-md-offset-1">
-                <table id="tabla" class="table table-bordered">
+                <table id="tabla" class="table table-bordered  table-striped">
                     @role('vendedor')
-                        <thead class='bg-primary text-while'>
+                        <thead class='bg-info text-while'>
                             <tr>
                                 <th>imagen</th>
                                 <th>Nombre Articulo</th>
@@ -81,7 +102,9 @@
                                     <tr>
                                         <td>
                                             <img src="{{ $articulo->image_url }}" alt="{{ $articulo->articulo_nom }}"
-                                                class="img-fluid" style="width: 150px;">
+                                                class="img-fluid"
+                                                style="width: 150px;height:100px;  background-size: cover;
+                                                background-position: center;">
                                         </td>
                                         <td>{{ $articulo->articulo_nom }}</td>
                                         <td>
@@ -131,7 +154,9 @@
                                     <tr>
                                         <td>
                                             <img src="{{ $articulo->image_url }}" alt="{{ $articulo->articulo_nom }}"
-                                                class="img-fluid" style="width: 150px;">
+                                            class="img-fluid"
+                                            style="width: 150px;height:100px;  background-size: cover;
+                                            background-position: center;">
                                         </td>
                                         <td>{{ $articulo->articulo_nom }}</td>
                                         <td>{{ $articulo->comercio->comercio_nom }}</td>
@@ -212,4 +237,8 @@
 
 @endsection
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('card.css') }}">
+
+@endsection
 @endsection

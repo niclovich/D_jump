@@ -17,14 +17,18 @@
             <div class="col">
                 <h5>Facturar a</h5>
                 <p>
-                    {{ $user->name }}
+                    Nombre y Apellido:{{ $venta->firstName ." ". $venta->lastName  }}
                 </p>
             </div>
             <div class="col">
-                <h5>Enviar a </h5>
+                <h5>Adrres 1 </h5>
                 <p>
-                    Barrio Ciudad Valdiva
+                    {{$venta->address}}
                     {{ $user->email }}
+                </p>
+                <h5>Adrress2 </h5>
+                <p>
+
                 </p>
             </div>
             <div class="col">
@@ -41,7 +45,7 @@
 
         <div class="row my-5">
             <table class="table table-borderless factura">
-                <thead class='bg-primary text-while'>
+                <thead class='bg-info text-while'>
                     <tr>
                         <th>Numo de pedido</th>
                         <th>Sub Total</th>

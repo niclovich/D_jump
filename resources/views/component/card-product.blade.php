@@ -6,7 +6,7 @@
     <div class="col-md-6 mt-1">
         @if ($n < 3  and  $val==1 )
             <div class="mt-1 mb-1 spec-1">
-                <p class="estadonaranaja">Mas Vendido</p>
+                <p class="estadonaranaja" style="text-align: center;"> Mas Vendido</p>
             </div>
         @endif
         <h5>{{ $articulo->articulo_nom }}</h5>

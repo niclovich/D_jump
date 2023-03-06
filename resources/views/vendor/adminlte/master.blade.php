@@ -25,6 +25,8 @@
     {{-- Base Stylesheets --}}
     @if (!config('adminlte.enabled_laravel_mix'))
         <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
         <link rel="stylesheet" href="{{ asset('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
         {{-- Configured Stylesheets --}}
@@ -39,7 +41,10 @@
     @else
         <link rel="stylesheet" href="{{ mix(config('adminlte.laravel_mix_css_path', 'css/app.css')) }}">
     @endif
+    <link rel="stylesheet" href="{{ asset('css/userpanel.css') }}">
+
     <style>
+
         .lineahome {
             background-color: #bd931f;
             color: #bd931f
@@ -119,18 +124,18 @@
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
-    @if (Request::route()->getName() === 'login'  )
+    @if (Request::route()->getName() === 'login')
         <header>
             @include('component.navbar')
 
         </header>
     @endif
-    @if (Request::route()->getName() === 'register'  )
-    <header>
-        @include('component.navbar')
+    @if (Request::route()->getName() === 'register')
+        <header>
+            @include('component.navbar')
 
-    </header>
-@endif
+        </header>
+    @endif
 
     {{-- Body Content --}}
     @yield('body')

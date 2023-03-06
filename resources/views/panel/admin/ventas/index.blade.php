@@ -1,7 +1,10 @@
 @extends('adminlte::page')
 @section('title', 'Inicio')
 @section('content_header')
-    <h1>Compras del utimo mes</h1>
+    <div class="card text-center">
+        <h1>Ventas del ultimo mes</h1>
+
+    </div>
 @stop
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/estadoscolores.css') }}">
@@ -17,9 +20,9 @@
         @endif
         <div class='row'>
             <div class="col-md-12 col-md-offset-1">
-                <table id="tabla" class="table table-bordered">
-                    @role('cliente')
-                        <thead class='bg-primary text-while'>
+                <table id="tabla" class="table table-bordered table-striped">
+                    @role('admin')
+                        <thead class='bg-info text-while'>
                             <tr>
                                 <th>Numo de factura</th>
                                 <th>estado</th>
@@ -47,6 +50,10 @@
                                                     <p class="estadonaranaja">En Camino</p>
                                                 @break
 
+                                                @case('Listo')
+                                                    <p class="estadogris">Listo</p>
+                                                @break
+
                                                 @case('Cancelado')
                                                     <p class="estadorojo">Cancelado</p>
                                                 @break
@@ -56,9 +63,19 @@
                                         <td>
                                             <div class="d-flex">
                                                 <a href="{{ route('ventas.show', $item) }}"
-                                                    class="btn btn-sm btn-primary text-white text-uppercase me-1">
+                                                    class="btn btn-primary text-white text-uppercase me-1">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
+                                                <form action="{{ route('ventas.update', $item) }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="estado" id="estado" value="Entregado">
+                                                    <button type="submit" class="btn btn-success  "> <i
+                                                            class="fas fa-check"></i>
+                                                    </button>
+                                                </form>
+
                                                 <form class="form-card" action="{{ route('pedidos.generate2-pdf', $item) }}"
                                                     method="POST" enctype="multipart/form-data">
                                                     @csrf

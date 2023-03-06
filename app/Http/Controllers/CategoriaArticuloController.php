@@ -48,7 +48,13 @@ class CategoriaArticuloController extends Controller
      */
     public function show(CategoriaArticulo $categoria)
     {
+        $ruta='search='.$categoria->categoria_nombre;
+        return redirect()->route('articulos.search',$ruta);
+
+
+        /*
         $user = Auth::user();
+        $val="1";
         if (is_null($user)) {
             $articulos = Articulo::where('estado', 'Validado')->where('categoria_id', $categoria->id)->paginate(10);
             $categoria_nom = $categoria->categoria_nombre;
@@ -75,7 +81,7 @@ class CategoriaArticuloController extends Controller
 
         }
 
-        return view('articulos.index', compact('categorias', 'articulos', 'categoria_nom'));
+        return view('articulos.index', compact('categorias', 'articulos', 'categoria_nom','val'));*/
     }
 
     /**

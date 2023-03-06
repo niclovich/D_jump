@@ -156,8 +156,10 @@ text-align: left;">
 100%; color: #939597; font-family: Helvetica; font-size: 18px; line-height: 
 160%; margin: 10px 0; mso-line-height-rule: exactly; padding: 0; 
 text-align: left;">
-                                                                               Nombre: {{ $testMailData['user']->name }} <br>
-                                                                               Email: {{ $testMailData['user']->email }}
+                                                                                Nombre:
+                                                                                {{ $testMailData['user']->name }} <br>
+                                                                                Email:
+                                                                                {{ $testMailData['user']->email }}
                                                                             </p>
                                                                             <div
                                                                                 style="width:122px; float:left; margin-top:10px;margin-left:-15px">

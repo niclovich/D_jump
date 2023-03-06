@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 @section('contenido')
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="background-color: #F2C94C">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -12,7 +12,7 @@
                     <form class="search-bar" method="GET" action="{{ route('articulos.search') }}">
                         <input class="buscar_text" value="{{ old('product_search') }}" name="search" type="search"
                             placeholder="Buscar Articulos" aria-label="Search">
-                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></i></button>
+                        <button class="" type="submit"><i class="fa-solid fa-magnifying-glass"></i></i></button>
                     </form>
                 </div>
                 <div class="carousel-caption d-none d-md-block">
@@ -24,8 +24,8 @@
 
                 </div>
                 <a href="{{ route('register') }}">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Registrate</h5>
+                    <div class="carousel-caption d-none d-md-block" style="  margin-top: 40%">
+                        <h5 class="text-center">Registrate</h5>
                         <p>Compra por mayor </p>
                     </div>
                 </a>
@@ -52,20 +52,22 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    <div class="container">
-        <div class="panel-categoria " style="display: flex;align-items: center;justify-content: center;">
-            <hr style="width: 30%">
-            <h1>CATEGORÍAS</h1>
-            <hr style="width: 30%">
-            @include('component.glidercategorias')
-
+    <div class="row" style="">
+        @include('component.panel-indicaciones')
+    </div>
+    <div class="container ">
+        <div class="panel-categoria ">
+            <div class="titulo">
+                <h1>CATEGORIAS</h1>
+                <hr>
+            </div>
+            <div class="row">
+                @include('component.glidercategorias')
+            </div>
         </div>
-        <hr class="lineahome">
         <div class="panel-articulos">
-            <div class="panel-categoria " style="display: flex;align-items: center;justify-content: center;">
-                <hr style="width: 30%">
+            <div class="titulo">
                 <h1>DESTACADOS</h1>
-                <hr style="width: 30%">
             </div>
             @if (count($articulos) >= 6)
                 <div class="row">
@@ -88,7 +90,7 @@
                 </div>
                 <div id="button-vermas"class="row align-items-center ">
                     <div class="col text-center">
-                        <a class="btn btn-success btn-lg w-50" onclick="vermas();ocultarvermas();">ver mas </a>
+                        <a class="btn btn-success  btn-lg w-50" onclick="vermas();ocultarvermas();">ver mas </a>
                     </div>
 
                 </div>
@@ -106,15 +108,15 @@
 
         </div>
 
-        <hr class="lineahome">
     </div>
 @endsection
 
 @section('js')
     @yield('js')
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
     <script>
         new Glider(document.querySelector('.glider'), {
-            slidesToShow: 6,
+            slidesToShow: 4,
             slidesToScroll: 1,
             draggable: true,
             dots: '.dots',
@@ -126,8 +128,9 @@
     </script>
 @endsection
 @section('css')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+
     <link rel="stylesheet" href="{{ asset('card.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/welcomecarrusel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/comercios.css') }}">
     <link rel="stylesheet" href="{{ asset('css/categoria.css') }}">
 
@@ -135,7 +138,7 @@
     <style>
         .container-one {
             width: 100%;
-            min-height: 50vh;
+            min-height: 70vh;
             padding: 5%;
             background-position: center;
             background-size: cover;
@@ -143,14 +146,13 @@
             align-items: center;
             justify-content: center;
             padding-top: 70px;
-            border-radius: 60px;
             background-image: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)), url('https://abarrotero.com/wp-content/uploads/2018/09/mayoreo_ventas_abarrotero.png');
 
         }
 
         .container-second {
             width: 100%;
-            min-height: 50vh;
+            min-height: 70vh;
             padding: 5%;
             background-image: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)), url('https://turismo.buenosaires.gob.ar/sites/turismo/files/mercado_san_telmo1500x610_0.jpg');
             background-position: center;
@@ -159,13 +161,12 @@
             align-items: center;
             justify-content: center;
             padding-top: 50px;
-            border-radius: 60px;
 
         }
 
         .container-third {
             width: 100%;
-            min-height: 50vh;
+            min-height: 70vh;
             padding: 5%;
             background: url('imagen/inicio3.png');
             background-position: center;
@@ -174,7 +175,6 @@
             align-items: center;
             justify-content: center;
             padding-top: 50px;
-            border-radius: 60px;
 
         }
     </style>

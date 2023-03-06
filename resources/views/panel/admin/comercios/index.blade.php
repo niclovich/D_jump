@@ -1,7 +1,40 @@
 @extends('adminlte::page')
 @section('title', 'Inicio')
 @section('content_header')
-    <h1>Listado Comercio</h1>
+    <div class="container-fuild">
+        <div class="row text-center">
+            <div class=" col-6">
+                <div class="info-box mb-3 bg-warning">
+                    <span class="info-box-icon"><i class="fas fa-tag"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Comercios</span>
+                        <span class="info-box-number">{{ count($comercios) }}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+            </div>
+            <div class=" card col-6">
+                <div class="row ">
+                    <div class="col">
+                        Descargar pdf <br>
+                        <a href="{{ route('comercios.generate-pdf') }}"
+                            class="btn btn-danger text-white text-uppercase me-1"><i class="fa fa-file-pdf-o"
+                                aria-hidden="true"></i>
+
+                        </a>
+                    </div>
+                    <div class="col">
+                        Generar Exel <br>
+                        <a href="{{ route('comercios.export') }}" class="btn btn-warning text-white text-uppercase me-1">
+                            <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 @section('css')
 
@@ -23,24 +56,10 @@
             </button>
         </div>
     @endif
-    <div class="row">
-        <div class="row">
-            <div class="col-md-12 col-md-offset-1">
-                <a href="{{ route('comercios.generate-pdf') }}"
-                    class="btn btn-sm btn-danger text-white text-uppercase me-1">
-                    Generar Pdf
-                </a>
-                <a href="{{ route('comercios.export') }}" class="btn btn-sm btn-warning text-white text-uppercase me-1">
-                    Generar Exel
-                </a>
-
-            </div>
-        </div>
-    </div>
     <div class='row'>
         <div class="col-md-12 col-md-offset-1">
-            <table id="tabla" class="table table-bordered">
-                <thead class='bg-primary text-while'>
+            <table id="tabla" class="table table-bordered table-striped">
+                <thead class='bg-info text-while'>
                     <tr>
                         <th>imagen</th>
                         <th>Nombre dueño</th>

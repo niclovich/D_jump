@@ -17,8 +17,8 @@
         @endif
         <div class='row'>
             <div class="col-md-12 col-md-offset-1">
-                <table id="tabla" class="table table-bordered">
-                    <thead class='bg-primary text-while'>
+                <table id="tabla" class="table table-bordered table-striped">
+                    <thead class='bg-info text-while '>
                         <tr>
                             <th>Numo de factura</th>
                             <th>estado</th>

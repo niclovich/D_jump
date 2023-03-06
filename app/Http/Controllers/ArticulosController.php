@@ -64,17 +64,19 @@ class ArticulosController extends Controller
 
             $articulos->load('comercio');
             $articulos->load('categoria_articulo');
+            $inventario= Articulo::sum('stock');
 
             //return $articulos;
-            return view('panel.admin.articulos.index', compact('articulos'));
+            return view('panel.admin.articulos.index', compact('articulos','inventario'));
         } else {
             if (($user == 'vendedor')) {
                 $comercios = Comercio::where('user_id', Auth::user()->id)->first();
                 $articulos = Articulo::where('comercio_id', $comercios->id)->where('estado', 'Validado')->orderBy('stock', 'asc')->get();
+                $inventario= Articulo::where('comercio_id', $comercios->id)->where('estado', 'Validado')->sum('stock');
                 //return $articulos;
                 $articulos->load('comercio');
                 $articulos->load('categoria_articulo');
-                return view('panel.admin.articulos.index', compact('articulos'));
+                return view('panel.admin.articulos.index', compact('articulos','inventario'));
             }
             else{
                 if($user == 'cliente'){

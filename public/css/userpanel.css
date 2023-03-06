@@ -1,0 +1,23 @@
+.imagen-user{
+    color: #333;
+    font-size: 14px;
+    height: 25px;
+}
+.perfil-user{
+    height: 80px;
+}
+.perfil-user img{
+    height: 50px;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.menu{
+    background: white;
+}

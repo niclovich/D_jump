@@ -380,7 +380,7 @@ return [
         ],
         [
             'text' => 'Mis compras',
-            'route' => 'compras.venedor',
+            'route' => 'compras',
             'icon' => 'fas  fa-shopping-cart', // icono de fontawesome
             'can' => ['clientepedidos','miscomprasvendedor']
         ],
@@ -391,22 +391,17 @@ return [
             'header' => 'Configuracion de Perfil',
         ],
 
-        /*[
-            'text' => 'Registrar Comercio',
-            'route' => 'comercios.create',
-            'icon' => 'fas fa-users', // icono de fontawesome
-            'can' => 'quierovender' 
-        ], 
+
         [
             'text' => 'Mi perfil',
-            'url'  => 'admin/settings',
+            'route'  => 'settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'route'  => 'change_password',
             'icon' => 'fas fa-fw fa-lock',
-        ],*/
+        ]
     ],
 
     /*

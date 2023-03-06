@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendMail extends Mailable
+class SendMailVenta extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -32,6 +32,6 @@ class SendMail extends Mailable
     public function build()
     {
         return $this->subject('DJump')
-                    ->view('emails.testMail');
+                    ->view('emails.ventaMail');
     }
 }

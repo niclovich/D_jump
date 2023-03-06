@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMail;
+use App\Mail\SendMailVenta;
 use App\Models\Articulo;
 use App\Models\Detallepedido;
 use App\Models\Pedido;
@@ -14,6 +16,7 @@ use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use PayPal\Exception\PayPalConnectionException;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
@@ -187,6 +190,13 @@ class PaymentController extends Controller
                             }
                         }
                     }
+                    $mailData = [
+                        'factura'=>$venta->id,
+                        'nombre' => $venta->firstName,
+                        'dirreccion' => $venta->address,
+                        'telefono' => "3874199824"
+                    ];
+                    Mail::to($user->email)->send(new SendMailVenta($mailData));
                     CartFacade::clear();
                     DB::commit();
                     return redirect()->route('cart.index')->with('succes_venta', 'Pago realizado Realizado');

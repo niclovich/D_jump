@@ -40,7 +40,7 @@ Route::put('/PDF/{venta}', [VentaController::class,'generatePDF2'])->name('pedid
 
 Route::get('generate-pedidospdf', [VentaController::class,'generatePDF'])->name('pedidos.generate-pdf');
 
-Route::get('/compras', [VentaController::class,'miscomprasvenedor'])->name('compras.venedor');
+Route::get('/compras', [VentaController::class,'miscomprasvenedor'])->name('compras');
 Route::get('/compras/{compra}', [VentaController::class, 'show2'])->name('compras.show2');
 
 Route::resource('/ventas', VentaController::class)->names('ventas');
@@ -84,3 +84,9 @@ Route::get('comercioorderssday', [ChartJSController::class, 'comercioorderssday'
 Route::get('allusersformonth', [ChartJSController::class, 'allusersformonth'])->name('allusersformonth');
 Route::get('allcomerciosformonth', [ChartJSController::class, 'allcomerciosformonth'])->name('allcomerciosformonth');
 
+
+//Setting user
+
+Route::get('settings', [UserController::class, 'settings'])->name('settings');
+Route::get('change_password', [UserController::class, 'change_password'])->name('change_password');
+Route::put('/users', [UserController::class, 'updatechange_password'])->name('users.updatechange_password');

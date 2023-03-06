@@ -63,7 +63,8 @@ class ComercioController extends Controller
                 'comercio_nom' => 'required',
                 'comercio_horario' => 'required',
                 'comercio_descripcion' => 'required',
-                'comercio_telefono' => 'required'
+                'comercio_telefono' => 'required',
+
             ]);
             $user->rol = 'vendedor';
             $user->removeRole('cliente');
@@ -77,14 +78,16 @@ class ComercioController extends Controller
                 'comercio_horario' => $request->get('comercio_horario'),
                 'comercio_telefono' =>  $request->get('comercio_telefono'),
                 'estado' => 'validado',
-                'longitud' => 15478,
-                'latitud' => 54548
+                'longitud' => $request->get('longitud'),
+                'latitud' =>  $request->get('latitud')
             ]);
+
+            
             DB::commit();
-            return redirect()->route('/home.index');
+            return redirect()->route('/home.index')->with("success_msg","Bievenido! Ahora pruebalo tu mismo");
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect()->route('/home.index');
+            return redirect()->route('comercios.create');
         }
     }
 
@@ -136,7 +139,8 @@ class ComercioController extends Controller
         $comercio->comercio_descripcion = $request->get('comercio_descripcion');
         $comercio->comercio_horario = $request->get('comercio_horario');
         $comercio->comercio_telefono = $request->get('comercio_telefono');
-
+        $comercio->longitud = $request->get('longitud');
+        $comercio->latitud = $request->get('latitud');
         $comercio->save();
         //$comercio->update($request->all());
         //return $comercio;

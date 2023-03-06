@@ -64,22 +64,29 @@
             </div>
         </div>
         <div class="row">
+            @if (count($articulos) > 0)
             <h2>Articulos del vendedor </h2>
-            <div class="glider-contain">
-                <div class="glider">
-                    @foreach ($articulos as $articulo)
-                        <div class="col">
-                            @include('component.cart-articulomini')
-                        </div>
-                    @endforeach
-                </div>
-                <button aria-label="Previous" class="glider-prev" id="glider-prev">«</button>
-                <button aria-label="Next" class="glider-next" id="glider-next">»</button>
-                <div role="tablist" class="dots"></div>
-            </div>
 
+                <div class="glider-contain">
+                    <div class="glider">
+                        @foreach ($articulos as $articulo)
+                            <div class="col">
+                                @include('component.cart-articulomini')
+                            </div>
+                        @endforeach
+                    </div>
+                    <button aria-label="Previous" class="glider-prev" id="glider-prev">«</button>
+                    <button aria-label="Next" class="glider-next" id="glider-next">»</button>
+                    <div role="tablist" class="dots"></div>
+                </div>
+            @else
+                <div class="row">
+                    <h2>Ester comercio no tiene articulos cargados</h2>
+
+                </div>
+            @endif
         </div>
-        <a href="{{route("comercios.show2",$comercio)}}"></a>
+        <a href="{{ route('comercios.show2', $comercio) }}"></a>
     </div>
 @endsection
 

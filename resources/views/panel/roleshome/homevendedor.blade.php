@@ -5,6 +5,22 @@
 @stop
 @section('content')
     <div class="container">
+        @if (session()->has('success_msg'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session()->get('success_msg') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
+        @if (session()->has('alert_msg'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ session()->get('alert_msg') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
         <br>
         <br>
         <div class="row">
@@ -19,7 +35,8 @@
                     <div class="icon">
                         <i class="fas fa-cart-arrow-down"></i>
                     </div>
-                    <a href="{{ route('ventas.index') }}" class="small-box-footer">Mas info   <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('ventas.index') }}" class="small-box-footer">Mas info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -34,7 +51,8 @@
                     <div class="icon">
                         <i class="fas fa-shopping-basket"></i>
                     </div>
-                    <a href="{{ route('articulos.index') }}" class="small-box-footer">Mas info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('articulos.index') }}" class="small-box-footer">Mas info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -44,12 +62,13 @@
                     <div class="inner">
                         <h3>0</h3>
 
-                        <p>Articulos en  stock minimo</p>
+                        <p>Articulos en stock minimo</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-exclamation-circle"></i>
                     </div>
-                    <a href="{{ route('articulos.index') }}" class="small-box-footer">Mas info  <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('articulos.index') }}" class="small-box-footer">Mas info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -57,20 +76,23 @@
                 <!-- small box -->
                 <div class="small-box bg-secondary">
                     <div class="inner">
-                        <h3>{{$comercio->comercio_nom}}</h3>
+                        <h3>{{ $comercio->comercio_nom }}</h3>
 
                         <p>Setting</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-store"></i>
                     </div>
-                    <a href={{ route('comercios.edit', $comercio) }} class="small-box-footer">Mas info  <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href={{ route('comercios.edit', $comercio) }} class="small-box-footer">Mas info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
         </div>
     </div>
     <!-- Main content -->
+    <br>
+    <br>
     <section class="container">
         <div class="row">
             <div class="col-md-6">
@@ -257,42 +279,35 @@
             const labels = ['Enero', 'Febrero', 'Marzo', 'Abril']
 
             const dataset1 = {
-                label: "Dataset 1",
-                data: [10, 55, 60, 120],
+                label: "Arroz 10 minutos ",
+                data: [10, 55, 60, 100],
                 borderColor: 'rgba(248, 37, 37, 0.8)',
                 fill: false,
                 tension: 0.1
             };
 
             const dataset2 = {
-                label: "Dataset 2",
-                data: [5, 44, 55, 100],
+                label: "	ACEITE MAROLIO",
+                data: [5, 44, 55, 60],
                 borderColor: 'rgba(69, 248, 84, 0.8)',
                 fill: false,
                 tension: 0.1
             };
 
             const dataset3 = {
-                label: "Dataset 3",
-                data: [20, 40, 55, 120],
+                label: "ACEITE MAROLIO MEZCLA",
+                data: [20, 40, 55, 10],
                 borderColor: 'rgba(69, 140, 248, 0.8)',
                 fill: false,
                 tension: 0.1
             };
 
-            const dataset4 = {
-                label: "Dataset 4",
-                data: [18, 40, 20, 100],
-                borderColor: 'rgba(245, 40, 145, 0.8)',
-                fill: false,
-                tension: 0.1
-            };
 
             const graph = document.querySelector("#grafica-articulos");
 
             const data = {
                 labels: labels,
-                datasets: [dataset1, dataset2, dataset3, dataset4]
+                datasets: [dataset1, dataset2, dataset3]
             };
 
             const config = {

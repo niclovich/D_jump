@@ -19,14 +19,13 @@ class HomeController extends Controller
         }
         else{
             if($user->rol=="vendedor"){
-                $articulos= Articulo::join('comercios','articulos.comercio_id','=','comercios.id')
+                $articulos= Articulo::select("articulos.*")
+                ->join('comercios','articulos.comercio_id','=','comercios.id')
                 ->where('articulos.estado','Validado')
-                ->where('comercios.user_id','!=',$user->id)
-                ->take(18)->get();
+                ->where('comercios.user_id','!=',$user->id)->get();
             }
             else{
                 $articulos= Articulo::where('estado','Validado')->take(18)->get();
-
             }
 
 

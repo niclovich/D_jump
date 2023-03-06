@@ -1,6 +1,6 @@
 .container-one {
     width: 100%;
-    min-height: 80vh;
+    min-height: 70vh;
     padding: 5%;
     background-position: center;
     background-size: cover;
@@ -15,7 +15,7 @@
 
 .container-second {
     width: 100%;
-    min-height: 80vh;
+    min-height: 70vh;
     padding: 5%;
     background-image: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)), url('https://turismo.buenosaires.gob.ar/sites/turismo/files/mercado_san_telmo1500x610_0.jpg');
     background-position: center;
@@ -29,7 +29,7 @@
 }
 .container-third {
     width: 100%;
-    min-height: 80vh;
+    min-height: 70vh;
     padding: 5%;
     background-image: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)), url('https://turismo.buenosaires.gob.ar/sites/turismo/files/mercado_san_telmo1500x610_0.jpg');
     background-position: center;

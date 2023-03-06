@@ -1,10 +1,51 @@
 @extends('adminlte::page')
 @section('content_header')
-    @role ('vendedor')
-        <h1>Ultimos pedidos</h1>
-    
+    @role('vendedor')
+        <h1>
+            Ultimos pedidos</h1>
     @else
-        <h1>Pedidos de ventas {{$pedidos[0]->venta_id}}</h1>
+        <div class="container-fuild">
+            <div class=" card row text-center">
+                <h5>Detalle de venta</h5>
+                <h6>Num Factura: {{$venta->id}} </h6>
+                <h6>Estado: @switch($venta->estado)
+                        @case('Entregado')
+                            <label class="estadoverde">Entregado</label>
+                        @break
+
+                        @case('Empaquetando')
+                            <label class="estadoamaralillo">Empaquetando</label>
+                        @break
+
+                        @case('En Camino')
+                            <label class="estadonaranaja">En Camino</label>
+                        @break
+
+                        @case('Listo')
+                            <label class="estadogris">Listo</label>
+                        @break
+
+                        @case('Cancelado')
+                            <label class="estadorojo">Cancelado</label>
+                        @break
+                    @endswitch
+                </h6>
+
+            </div>
+            <div class="row ">
+                <div class=" card col-6 text-center">
+                    <h5>Informacion sobre el comprador</h5>
+                    <h6>Nombre :{{$venta->firstName}}</h6>
+                    <h6>Apellido: {{$venta->lastName}}</h6>
+                </div>
+                <div class=" card col-6 text-center">
+                    <h5>Dirreciones</h5>
+                    <h6>Adrres 1 :{{$venta->address}} </h6>
+                    <h6>Adrres 2 :{{$venta->address2}}  </h6>
+
+                </div>
+            </div>
+        </div>
     @endrole
 @stop
 @section('css')
@@ -22,9 +63,9 @@
         @endif
         <div class='row'>
             <div class="col-md-12 col-md-offset-1">
-                <table id="tabla" class="table table-bordered">
+                <table id="tabla" class="table table-bordered table-striped">
                     @role('cliente|admin')
-                        <thead class='bg-primary text-while'>
+                        <thead class='bg-info text-while'>
                             <tr>
                                 <th>Numo de factura</th>
                                 <th>estado</th>
@@ -59,7 +100,7 @@
                                             @endswitch
                                         </td>
                                         <td>{{ $item->totalpedido }}</td>
-                                        <td>{{ $item->comercio->comercio_nom}}</td>
+                                        <td>{{ $item->comercio->comercio_nom }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
                                             <div class="d-flex">
@@ -79,7 +120,7 @@
                             </tr>
                         @endif
                     @else
-                        <thead class='bg-primary text-while'>
+                        <thead class='bg-info text-while'>
                             <tr>
                                 <th>Numo de factura</th>
                                 <th>estado</th>
@@ -100,15 +141,17 @@
                                                 @case('Listo')
                                                     <p class="estadoverde">Listo</p>
                                                 @break
+
                                                 @case('Empaquetando')
                                                     <p class="estadoamaralillo">Empaquetando</p>
                                                 @break
+
                                                 @case('Cancelado')
                                                     <p class="estadorojo">Cancelado</p>
                                                 @break
                                             @endswitch
                                         <td>{{ $item->totalpedido }}</td>
-                                        <td>{{ $item->comercio->comercio_nom}}</td>
+                                        <td>{{ $item->comercio->comercio_nom }}</td>
 
                                         <td>{{ $item->created_at }}</td>
                                         <td>
@@ -122,7 +165,9 @@
                                                     @csrf
                                                     @method('PUT')
                                                     <input type="hidden" name="estado" id="estado" value="Listo">
-                                                    <button type="submit" class="btn btn-success  ">Listo</button>
+                                                    <button type="submit" class="btn btn-success  "> <i
+                                                            class="fas fa-check"></i>
+                                                    </button>
                                                 </form>
                                                 <form action="{{ route('pedidos.update', $item) }}" method="POST"
                                                     enctype="multipart/form-data">

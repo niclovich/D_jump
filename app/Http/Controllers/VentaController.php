@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMail;
+use App\Mail\SendMailVenta;
 use App\Models\Articulo;
 use App\Models\Comercio;
 use App\Models\Compra;
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use GuzzleHttp\Psr7\Response;
+use Illuminate\Support\Facades\Mail;
 
 class VentaController extends Controller
 {
@@ -71,7 +74,7 @@ class VentaController extends Controller
                                     'pedido_id' => $pedido->id,
                                     'cantidad' => $articarrito->quantity
                                 ]);
-                                $pedido->totalpedido = $pedido->totalpedido+CartFacade::get($articarrito->id)->getPriceSum();
+                                $pedido->totalpedido = $pedido->totalpedido + CartFacade::get($articarrito->id)->getPriceSum();
                                 $pedido->save();
                             } else {
                                 DB::rollback();
@@ -81,8 +84,16 @@ class VentaController extends Controller
                         }
                     }
                 }
+                $mailData = [
+                    'factura'=>$venta->id,
+                    'nombre' => $venta->firstName,
+                    'dirreccion' => $venta->address,
+                    'telefono' => "3874199824"
+                ];
+                Mail::to($user->email)->send(new SendMailVenta($mailData));
                 CartFacade::clear();
                 DB::commit();
+    
                 return redirect()->route('cart.index')->with('succes_venta', 'Pago realizado Realizado');
             } catch (\Exception $e) {
                 DB::rollback();
@@ -154,8 +165,16 @@ class VentaController extends Controller
             //return $pedidos;
             return view('panel.admin.pedidos.index', compact('pedidos'));
         } else {
-            $pedidos = Pedido::where('venta_id', $venta->id)->get();
-            return view('panel.admin.pedidos.index', compact('pedidos'));
+
+            if($user->rol="admin"){
+                $pedidos = Pedido::where('venta_id', $venta->id)->get();
+                $venta->load('user');
+                return view('panel.admin.pedidos.index', compact('pedidos','venta'));
+            }
+            else{
+                $pedidos = Pedido::where('venta_id', $venta->id)->get();
+                return view('panel.admin.pedidos.index', compact('pedidos'));
+            }
         }
     }
 
@@ -185,7 +204,10 @@ class VentaController extends Controller
      */
     public function update(Request $request, Venta $venta)
     {
-        //
+        $estado=$request->get('estado');
+        $venta->estado = $estado;
+        $venta->save();
+        return redirect()->route('ventas.index')->with('success', ' Venta Actualizado' . $venta->id);
     }
 
     /**

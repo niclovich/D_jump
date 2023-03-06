@@ -14,7 +14,7 @@
                             <div class="form-group col-sm-6 flex-column d-flex"> <label
                                     class="form-control-label px-3">Nombre
                                     Articulo<span class="text-danger"> *</span></label>
-                                <input type="text" id="articulo_nom" name="articulo_nom"
+                                <input class="inputregistro" type="text" id="articulo_nom" name="articulo_nom"
                                     value={{ $articulo->articulo_nom }}>
                             </div>
 
@@ -62,7 +62,7 @@
                             <div class="form-group col-sm-6 flex-column d-flex"> <label
                                     class="form-control-label px-3">Stock
                                     <span class="text-danger"> *</span></label>
-                                <input type="number" id="stock" name="stock" value={{$articulo->stock}} >
+                                <input class="inputregistro" type="number" id="stock" name="stock" value={{$articulo->stock}} >
                             </div>
                             @error('articulo_descripcion')
                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
@@ -73,13 +73,13 @@
                             <div class="form-group col-sm-6 flex-column d-flex"> <label
                                     class="form-control-label px-3">Precio por mayor
                                     <span class="text-danger"> *</span></label>
-                                <input type="number" id="precioxmayor" name="precioxmayor" min="0"
+                                <input class="inputregistro" type="number" id="precioxmayor" name="precioxmayor" min="0"
                                     value="{{ $articulo->precioxmayor }}" step=".01">
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex"> <label
                                     class="form-control-label px-3">Precio por menor <span class="text-danger">
                                         *</span></label>
-                                <input type="number" id="precioxmenor" name="precioxmenor" min="0"
+                                <input  class="inputregistro" type="number" id="precioxmenor" name="precioxmenor" min="0"
                                     value="{{ $articulo->precioxmenor }}" step=".01">
                             </div>
 

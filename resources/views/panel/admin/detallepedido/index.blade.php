@@ -16,10 +16,10 @@
     @endif
     <div class='row'>
         <div class="col-md-12 col-md-offset-1">
-            <table id="tabla" class="table table-bordered">
-                <thead class='bg-primary text-while'>
+            <table id="tabla" class="table table-bordered table-striped">
+                <thead class='bg-info text-while'>
                     <tr>
-                        <th>Num detallepedido</th>
+                        <th> </th>
                         <th>Nom Articulo</th>
                         <th>Precio</th>
                         <th>Cantidad</th>
@@ -29,7 +29,10 @@
                     <tbody>
                         @foreach ($detallepedios as $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
+                                <td>
+                                    <img src="{{ $item->image_url }}"  class="img-fluid"
+                                        style="width: 100px;">
+                                </td>
                                 <td>{{ $item->articulo->articulo_nom }}</td>
                                 <td>
                                     @if ($item->cantidad >= $item->articulo->cantidadminima)

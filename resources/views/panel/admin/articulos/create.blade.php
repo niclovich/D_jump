@@ -15,7 +15,7 @@
                             <div class="form-group col-sm-6 flex-column d-flex"> <label
                                     class="form-control-label px-3">Articulo nombre <span class="text-danger">
                                         *</span></label>
-                                <input type="text" id="articulo_nom" name="articulo_nom" placeholder="Nombre ">
+                                <input class="inputregistro" k5otype="text" id="articulo_nom" name="articulo_nom" placeholder="Nombre ">
                             </div>
 
                             <div class="form-group col-sm-6 flex-column d-flex"> <label
@@ -61,12 +61,12 @@
                             <div class="form-group col-sm-6 flex-column d-flex"> <label
                                     class="form-control-label px-3">Stock
                                     <span class="text-danger"> *</span></label>
-                                <input type="number" id="stock" name="stock" placeholder="stock ">
+                                <input class="inputregistro" type="number" id="stock" name="stock" placeholder="stock ">
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex"> <label
                                     class="form-control-label px-3">Compra minima <span class="text-danger">
                                         *</span></label>
-                                <input type="text" id="cantidadminima" name="cantidadminima"
+                                <input class="inputregistro" type="text" id="cantidadminima" name="cantidadminima"
                                     placeholder="Cantidad minima">
                             </div>
                         </div>
@@ -80,13 +80,13 @@
                             <div class="form-group col-sm-6 flex-column d-flex"> <label
                                     class="form-control-label px-3">Precio por mayor
                                     <span class="text-danger"> *</span></label>
-                                <input type="number" id="precioxmayor" name="precioxmayor" min="0" value="1"
+                                <input  class="inputregistro" type="number" id="precioxmayor" name="precioxmayor" min="0" value="1"
                                     step=".01">
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex"> <label
                                     class="form-control-label px-3">Precio por menor <span class="text-danger">
                                         *</span></label>
-                                <input type="number" id="precioxmenor" name="precioxmenor" min="0" value="1"
+                                <input class="inputregistro" type="number" id="precioxmenor" name="precioxmenor" min="0" value="1"
                                     step=".01">
                             </div>
 
