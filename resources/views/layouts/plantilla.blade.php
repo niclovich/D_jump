@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/userpanel.css') }}">
     <style>
-        .navbar-custom  {
+        .navbar-custom {
             background-color: #F2C94C;
             height: 60px;
         }
@@ -128,7 +128,8 @@
             font-weight: bold !important;
             text-align: left !important;
         }
-        .colorprincipal{
+
+        .colorprincipal {
             background-color: #F2C94C;
         }
     </style>
@@ -166,6 +167,13 @@
     @yield('js')
 
     <script>
+        function saveCoords(e) {
+            sessionStorage.setItem("coords", JSON.stringify({
+                y: window.scrollY,
+                x: window.scrollX
+            }));
+        }
+
         function posicionate() {
             var coords = JSON.parse(sessionStorage.getItem("coords"));
             if (coords) {
