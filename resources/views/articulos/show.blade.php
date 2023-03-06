@@ -110,7 +110,7 @@
     <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
     <script>
         new Glider(document.querySelector('.glider'), {
-            slidesToShow: 4,
+            slidesToShow: 5,
             slidesToScroll: 1,
             draggable: true,
             dots: '.dots',

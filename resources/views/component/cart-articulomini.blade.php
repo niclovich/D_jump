@@ -9,7 +9,7 @@
 
         <div class="about-product text-center mt-2">
             <div>
-                <h4 class="text-truncate  " style="max-width: 200px;">{{ $articulo->articulo_nom }}</h4>
+                <h4 class="text-truncate  " >{{ $articulo->articulo_nom }}</h4>
                 <h6 class="mt-0 text-black-50">
                     <i class="fas fa-store"></i><span> </span>
                     {{ $articulo->comercio->comercio_nom }}
