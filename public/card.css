@@ -24,7 +24,7 @@
 }
 
 .card {
-  height: auto;
+  height: 350px;
   background: #bdbdbd;
   justify-content: center;
   align-items: center;
@@ -156,7 +156,7 @@
 
 }
 .product-card .img-product .imgarticulo-product{
-  height:30vh;
+  height:200px;
 
 }
 .product-card .img-product .whishlist{
